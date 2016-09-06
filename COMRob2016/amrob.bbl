@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{sslWiki}
+Robocup-SSL, 2015.
+\newblock Small size league.
+\newblock http://wiki.robocup.org/wiki/Small\_Size\_League.html.
+
+\bibitem{SSLrules2016}
+Committee, S. S. L.~T., 2016.
+\newblock Laws of the robocup small size league 2016.
+\newblock
+  http://wiki.robocup.org/images/1/18/Small\_Size\_League\_-\_Rules\_2016.pdf,
+  April.
+
+\bibitem{rojasHist}
+Rojas, R.
+\newblock {A} {S}hort {H}istory of {O}mnidirectional {W}heels.
+\newblock http://ftp.inf.fu-berlin.de/pub/Rojas/omniwheel/shortomni.pdf.
+
+\bibitem{rojasForster06}
+Rojas, R., and Förster, G., 2006.
+\newblock ``Holonomic control of a robot with an omnidirectional drive.''.
+\newblock {\em Künstliche Intelligenz, BöttcherlIT Verlag}.
+
+\end{thebibliography}

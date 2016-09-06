@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: amrob.aux
+The style file: amrob.bst.bst
+Database file #1: amrob.bib.bib
+Warning--empty year in rojasHist
+You've used 4 entries,
+            1984 wiz_defined-function locations,
+            509 strings with 4048 characters,
+and the built_in function-call counts, 596 in all, are:
+= -- 42
+> -- 19
+< -- 0
++ -- 9
+- -- 5
+* -- 17
+:= -- 94
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 4
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 26
+empty$ -- 84
+format.name$ -- 5
+if$ -- 140
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 1
+newline$ -- 23
+num.names$ -- 4
+pop$ -- 27
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 0
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 4
+width$ -- 5
+write$ -- 42
+(There was 1 warning)

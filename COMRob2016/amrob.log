@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 AUG 2016 17:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 SEP 2016 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -532,35 +532,21 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 75.
 
-Underfull \vbox (badness 2426) has occurred while \output is active []
+Overfull \vbox (8.13779pt too high) has occurred while \output is active []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 100.
-
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 100.
- [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-Non-PDF special ignored!
-
-]
 Package epstopdf Info: Source file: <./Figures/arqGeneral.eps>
-(epstopdf)                    date: 2016-08-15 17:41:18
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 614331 bytes
 (epstopdf)             Output file: <./Figures/arqGeneral-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2016-08-15 17:43:21
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 120367 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/arqGeneral-eps-c
 onverted-to.pdf ./Figures/arqGeneral.eps>
 (epstopdf)             \includegraphics on input line 106.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/arqGeneral-eps-converted-to.pdf, id=11, 438.63875pt x 447.6725pt>
+<./Figures/arqGeneral-eps-converted-to.pdf, id=1, 438.63875pt x 447.6725pt>
 File: ./Figures/arqGeneral-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/arqGeneral-eps-converted-to.pdf>
@@ -572,14 +558,28 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 107.
 
-Underfull \vbox (badness 2401) has occurred while \output is active []
+Underfull \vbox (badness 8056) has occurred while \output is active []
 
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 114.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
+ [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+Non-PDF special ignored!
+
+]
 Package epstopdf Info: Source file: <./Figures/diagElectronica.eps>
-(epstopdf)                    date: 2016-08-14 19:43:44
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 301823 bytes
 (epstopdf)             Output file: <./Figures/diagElectronica-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2016-08-14 19:49:10
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 73668 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/diagElectronica-
 eps-converted-to.pdf ./Figures/diagElectronica.eps>
@@ -614,11 +614,11 @@ Underfull \hbox (badness 1122) in paragraph at lines 210--212
  []
 
 Package epstopdf Info: Source file: <./Figures/anglesRobot.eps>
-(epstopdf)                    date: 2016-08-15 17:50:11
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 59062 bytes
 (epstopdf)             Output file: <./Figures/anglesRobot-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2016-08-15 17:50:32
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 18107 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/anglesRobot-eps-
 converted-to.pdf ./Figures/anglesRobot.eps>
@@ -644,11 +644,11 @@ Underfull \hbox (badness 1622) in paragraph at lines 226--227
 
 [4 <./Figures/anglesRobot-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/esquema_PID_motor.eps>
-(epstopdf)                    date: 2016-08-14 20:15:31
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 456515 bytes
 (epstopdf)             Output file: <./Figures/esquema_PID_motor-eps-converted-
 to.pdf>
-(epstopdf)                    date: 2016-08-14 20:17:20
+(epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 87877 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/esquema_PID_moto
 r-eps-converted-to.pdf ./Figures/esquema_PID_motor.eps>
@@ -678,10 +678,10 @@ File: ./Figures/VelocidadM4.png Graphic file (type png)
 Package pdftex.def Info: ./Figures/VelocidadM4.png used on input line 381.
 (pdftex.def)             Requested size: 227.62204pt x 160.04485pt.
 Package epstopdf Info: Source file: <./Figures/output1.eps>
-(epstopdf)                    date: 2016-06-06 18:08:38
+(epstopdf)                    date: 2016-09-05 19:58:28
 (epstopdf)                    size: 86749 bytes
 (epstopdf)             Output file: <./Figures/output1-eps-converted-to.pdf>
-(epstopdf)                    date: 2016-07-08 02:37:33
+(epstopdf)                    date: 2016-09-05 19:58:28
 (epstopdf)                    size: 65381 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/output1-eps-conv
 erted-to.pdf ./Figures/output1.eps>
@@ -695,7 +695,12 @@ File: ./Figures/output1-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: ./Figures/output1-eps-converted-to.pdf used on input l
 ine 387.
 (pdftex.def)             Requested size: 227.62204pt x 91.75966pt.
- (./amrob.bbl
+
+Underfull \hbox (badness 1527) in paragraph at lines 465--466
+[]\OT1/ptm/m/n/10 Gracias al ITAM, es-pec[]^^Pficamente al De-par-ta-mento de
+ []
+
+(./amrob.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--7
 []\OT1/ptm/m/n/10 Robocup-SSL, 2015.  Small size league.
  []
@@ -730,7 +735,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--19
 Here is how much of TeX's memory you used:
  3263 strings out of 493089
  46180 string characters out of 6134842
- 120207 words of memory out of 5000000
+ 120200 words of memory out of 5000000
  6654 multiletter control sequences out of 15000+600000
  42502 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -745,7 +750,7 @@ texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive
 /2015/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2015/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on amrob.pdf (6 pages, 959706 bytes).
+Output written on amrob.pdf (6 pages, 959536 bytes).
 PDF statistics:
  160 PDF objects out of 1000 (max. 8388607)
  77 compressed objects within 1 object stream

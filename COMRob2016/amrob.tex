@@ -132,19 +132,20 @@ La arquitectura propuesta se muestra en la Fig. \ref{fig:ROSGral}. Se utiliza la
   \label{fig:ROSGral}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
-\subsection*{VISIÓN}
+\subsection*{CÓMPUTO EXTERNO}
+\subsubsection*{VISIÓN}
 Este es un componente proporcionado por SSL. El componente utiliza las imágenes obtenidas de dos cámaras colocadas en la parte superior de la cancha, las procesa y obtiene la posición y orientación de cada robot así como la posición de la pelota. El componente no está implementando en ROS pero sus salidas son adaptadas a ROS para poder utilizarlo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{PLANIFICACIÓN}
+\subsubsection*{PLANIFICACIÓN}
 Este componente es el encargado de realizar la planeación de tareas para todos los robots del equipo que se encuentren en el juego. Obtiene las posiciones de todos los elementos del juego de la visión así como las posiciones esperadas en un futuro de cada nodo de trayectorias.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{TRAYECTORIAS}
+\subsubsection*{TRAYECTORIAS}
 Cada robot cuenta con su nodo de trayectorias. Éste nodo recibe la posición actual, la deseada y el tiempo deseado del nodo de estrategias y se encarga de generar la trayectoria necesaria. De no ser posible generar la trayectoria deseada en el tiempo deseado, se reporta al nodo de Estrategias.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{COMUNICACIÓN}
+\subsubsection*{COMUNICACIÓN}
 Este nodo recibe la velocidad del robot deseada en cada ciclo y la envía al robot. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{ESTRUCTURA DEL ROBOT}
+\subsection*{ESTRUCTURA DEL ROBOT}
 
 Realizando un análisis de los robots de la liga, se determinó que la velocidad máxima deseada del robot se estableciera en 3.5 m/s. Igualmente, la carga que el robot debe soportar se estableció en 2.5 Kg. Debido a la velocidad del juego, es común que ocurran colisiones entre ellos por lo que el exterior del robot debe ser de un material resistente además contar con piezas fácilmente reemplazables.\par
 
@@ -160,10 +161,10 @@ La electrónica del robot se compone de una tarjeta de desarrollo MOJO la cual t
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{CARCASA Y BASE}
+\subsubsection*{CARCASA Y BASE}
 La base es la pieza en la cual se ensamblan el resto, mientras que la carcasa protege al robot de posibles impactos durante su utilización. Estas piezas constituyen las piezas de mayores dimensiones en el dise\~no por lo que son manufactaras usando plástico HIPS al ofrecer mejores resultados en piezas de grandes dimensiones. La carcasa est\'a formada por 4 piezas \'unicas. Como parte de la carcasa se incluye el patrón necesario para que la visi\'on de la liga proporcione la posici\'on del robot.\par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{ENERGÍA}
+\subsubsection*{ENERGÍA}
 Los componentes que requieren de electricidad para funcionar son tres: mecanismos para el movimiento, para la pelota y el cómputo. Cada uno utiliza su propia batería LiPo para tenerlos aislados eléctricamente entre si, para la comunicación entre ellos se utilizan optocopladores. Los mecanismos para el movimiento, motores y ESC son alimentados por una batería de 12 V. Los mecanismos para la pelota, Kickers y dribbler, son alimentados por una batería de 12 V. El componente de cómputo es alimentado por una batería de 7 V.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{MECANISMOS PARA MOVIMIENTO DEL ROBOT}
@@ -214,7 +215,7 @@ El mecanismo del dribbler consiste en un motor DC que funciona entre 3 y 5 V as�
 % \subsubsection*{DRIVER}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{CÓMPUTO}
+\subsection*{CÓMPUTO INTERNO}
 En esta sección se detallan los componentes de cómputo utilizados. Estos componentes mandan las señales necesarias a cada actuador además de recibir las señales de los sensores utilizados. Realizan los cálculos necesarios para el movimiento así como la comunicación con el resto del sistema.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{FPGA}
@@ -231,13 +232,14 @@ La FPGA se comunica con el Microcontrolador mediante SPI y Memory Mapping. Enví
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{MICROCONTROLADOR}
-En cada ciclo del microcontrolador, se reciben las velocidades deseadas \(X, Y y \omega\) así como las realeas de cada motor y se determina una nueva velocidad deseada de motor mediante el modelo omnidireccional así como aplicando un algoritmo de control PI. Las velocidades por motor calculadas son transferidas a la FPGA.
+En cada ciclo del microcontrolador, se reciben las velocidades deseadas \(X, Y y \omega\) así como las realeas de cada motor y se determina una nueva velocidad deseada de motor mediante el modelo omnidireccional así como aplicando un algoritmo de control PI. Las velocidades por motor calculadas son transferidas a la FPGA. Los algoritmos para el movimiento omnidireccional así como el algoritmo de control son implementados en el Microcontrolador.
 % En cada ciclo, se leen los registros de las velocidades de cada motor (deseada y real) y se realizan los cálculos para determinar la nueva velocidad de cada motor de acuerdo a los modelo omnidireccional y al algoritmo de control utilizado. \par
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{COMUNICACIÓN}
 Para el control del robot es necesario contar con comunicación inalámbrica (\'unicamente esta prohibido usar bluetooth). Se opt\'o por utilizar Wifi debido a la gran adopci\'on que tiene esta tecnología permitiendo utilizar practicamente cualquier equipo de cómputo para el control del robot. En específico, se utiliza XBee Wifi por su tamaño y utilizar voltaje TTL siendo compatible con la FPGA. Se utiliza direccionamiento estático para tener control de las IPs de cada robot, además de facilitar la conexión inicial con el access point. Para favorecer un diseño modular, el resto de los componentes son agnósticos a la tecnología utilizada para la comunicación. \par %El robot es capaz de reportar las velocidades deseadas calculadas mediante WiFi con fines de \par
 % Aunque existen diversos métodos de comunicación inalámbrica, se decidió utilizar WiFi debido a la facilidad de adaptar cualquier computadora para ser utilizada con el robot. En el robot se utiliza un radio XBee Wifi debido a las diversas facilidades que ofrece la plataforma de XBee además de ser conveniente su tamaño y alimentación (3.3V). \par
+\section*{ALGORITMOS}
 \subsection*{MOVIMIENTO OMNIDIRECCIONAL}
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
 \begin{figure}
@@ -489,7 +491,7 @@ Como trabajo futuro se propone un método de sintonización automático para el 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{acknowledgment}
-Gracias al ITAM, específicamente al Departamento de Sistemas Digitales por el apoyo brindado al Laboratorio de Robótica. 
+Este trabajo fue patrocinado por la Asociación Mexicana de Cultura A.C.
 \end{acknowledgment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

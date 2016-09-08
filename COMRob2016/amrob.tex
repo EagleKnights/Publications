@@ -43,29 +43,41 @@
 \papernum{XVIIICOMRob2016/ID-000}
 
 %%% You need to remove 'DRAFT: ' in the title for the final submitted version.
-\title{Diseño y Desarrollo de un Robot Omnidireccional enfocado en Robocup Small Size League}
+\title{Diseño y Desarrollo de un Robot Omnidireccional para Aplicaciones Colaborativas}
 
 %%% first author
-\author{Full Name of First Author
+\author{Edgar Granados Osegueda
     \affiliation{
-	Area Department or Division Name\\
-	Company or College Name\\
-	City, State (spelled out), Zip Code\\
-	Country (only if not MEXICO)\\
-    Email: Email address (if available)
+	Department of Digital Systems\\
+	ITAM\\
+	Rio Hondo 1, Ciudad de México, 01080\\
+	% Country (only if not MEXICO)\\
+    edgar.granados@itam.mx
     }	
 }
 
 %%% second author
 %%% remove the following entry for single author papers
 %%% add more entries for additional authors
-\author{Full Name of Second Coauthor\thanks{Address all correspondence to this author.} 
+\author{Marco Morales Aguirre
+%\thanks{Address all correspondence to this author.} 
        {\tensfb }      
-    \affiliation{Department or Division Name\\
-	Company or College Name\\
-	City, State (spelled out), Zip Code\\
-	Country (only if not MEXICO)\\
-	Email address (if available)
+    \affiliation{Department of Digital Systems\\
+  ITAM\\
+  Rio Hondo 1, Ciudad de México, 01080\\
+	% Country (only if not MEXICO)\\
+	marco.morales@itam.mx
+    }
+}
+
+\author{José Guadalupe Romero Velazquez
+%\thanks{Address all correspondence to this author.} 
+       {\tensfb }      
+    \affiliation{Department of Digital Systems\\
+  ITAM\\
+  Rio Hondo 1, Ciudad de México, 01080\\
+  % Country (only if not MEXICO)\\
+  jose.romerovelazquez@itam.mx
     }
 }
 
@@ -76,7 +88,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-{\it Este artículo describe el diseño de un robot movil omnidireccional para Robocup Small Size League, así como su construcción. Igualmente, se describen los algoritmos utilizados para lograr el movimiento omnidireccional así como el algoritmo de control utilizado. Se detalla la arquitectura del sistema, en el cual se utiliza ROS.}
+{\it Este artículo describe el diseño de un robot movil omnidireccional para Robocup Small Size League, así como su construcción. Igualmente, se describen los algoritmos utilizados para lograr el movimiento omnidireccional así como el algoritmo de control utilizado. Se detalla la arquitectura del sistema, en el cual se utiliza ROS. Como resultados, se muestra el movimiento obtenido con la solución. \par
+}
 \end{abstract}
 % \\
 % \\
@@ -84,20 +97,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{INTRODUCCIÓN}
-Con la finalidad de participar en Robocup, en la categoría Small Size League (SSL) es necesario contar con un robot que cumpla con las especificaciones establecidas en el reglamento F180 de la liga \cite{sslWiki}. Aunque dentro de estas reglas, se especifica si el robot debe ser omnidireccional, todos los equipos han optado por este tipo de robots al dar mayor libertad y agilidad a los movimientos dentro de la competencia. \par
-Adcionalmente, el robot se puede utilizar en otros escenarios de investigación de Robótica. El diseño es modular y facilmente adaptable a otros requerimientos. \par
+
+Con la finalidad de contar con un sistema para realizar investigación en robótica colaborativa multi-agente, se presenta el diseño de un robot móvil omnidireccional. Se selccionó éste tipo de robot debido a las características de movimiento que ofrece. El diseño es modular para favorecer la adaptación a distintos escenarios de prueba. El sistema se compone de un equipo homogéneo de robots omnidireccionales y un controlador implementado con ROS para facilitar la modularidad y el mantenimiento del código. Con la finalidad de acotar el problema de diseño físico además de tener una plataforma de prueba, se toma como base las especificaciones y plataforma de Robocup Small Size League. 
+
+% -Motivación
+% -Definición del Problema
+% -Esbozo de la sln presentada
+% -Resultados
+
+% Con la finalidad de participar en Robocup, en la categoría Small Size League (SSL) es necesario contar con un robot que cumpla con las especificaciones establecidas en el reglamento F180 de la liga \cite{sslWiki}. Aunque dentro de estas reglas, se especifica si el robot debe ser omnidireccional, todos los equipos han optado por este tipo de robots al dar mayor libertad y agilidad a los movimientos dentro de la competencia. \par
+% Adcionalmente, el robot se puede utilizar en otros escenarios de investigación de Robótica. El diseño es modular y facilmente adaptable a otros requerimientos. \par
 % Para poder participar en la competencia de Robocup Small Size League (SSL), es necesario cumplir con las especificaciones del reglamento F180 de la liga. Dentro de las características más importantes se encuentra que el robot debe caber dentro de un cilindro de 18 cm de altura por 15 cm de díametro. \par
 % Adem\'as de participar en Robocup, es necesario que el robot se pueda adaptar fácilmente a otros escenarios de investigación de Robótica. \par
 \section*{MARCO DE REFERENCIA}
-Un robot de SSL debe caber dentro de un cilindro de 18 cm de altura por 15 cm de diámetro, siendo el diseño más eficiente (y el utilizado por todos los equipos) un robot cilíndrico con ruedas concéntricas. La liga cuenta con un sistema de visión el cual da la posición de cada robot y la pelota utilizada, para lo cual el robot debe cumplir con el \textit{patrón estandar} en la parte superior \cite{SSLrules2016}. Igualmente, es necesario contar con mecanismos para la pelota, los cuales son los encargados de mantener la pelota cerca del robot (\textit{dribbler}) y poder patear \textit{kickers}. \par
-
 Un robot omnidireccional es aquel que puede moverse de un punto A a un punto B en línea recta mientras gira sobre su propio eje para llegar en una orientación dada \cite{rojasHist}. Para obtener un movimiento omnidireccional con un robot de ruedas concéntricas, es necesario contar con por lo menos 3 ruedas omnidireccionales colocadas con distintos ángulos de separación \cite{rojasForster06}. Un número de ruedas adicional proporciona redundancia, siendo 4 ruedas el dise\~no mas popular y el seleccionado. \par
+
+% -Otros Robots Omnidireccionales, Control\par
+
+Específicamente, un robot de SSL debe caber dentro de un cilindro de 18 cm de altura por 15 cm de diámetro, siendo el diseño más eficiente (y el utilizado por todos los equipos) un robot cilíndrico con ruedas concéntricas. La liga cuenta con un sistema de visión el cual da la posición de cada robot y la pelota utilizada, para lo cual el robot debe cumplir con el \textit{patrón estandar} en la parte superior \cite{SSLrules2016}. Igualmente, es necesario contar con mecanismos para la pelota, los cuales son los encargados de mantener la pelota cerca del robot (\textit{dribbler}) y poder patear \textit{kickers}. \par
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{ARQUITECTURA DE CONTROL DE ROBOT OMNIDIRECCIONAL}
+% \section*{DISEÑO DEL ROBOT}
+\section*{ARQUITECTURA DEL SISTEMA}
 % \section*{CONTROLADOR}
-La arquitectura propuesta se muestra en la Fig. \ref{fig:ROSGral}. Es necesario utilizar los componentes proporcionados por la Liga, específicamente la Visión. Para los distintos componentes que se implementantan se utiliza ROS. La utilización de ROS permite añadir funcionalidad al sistema de manera modular, facilitando la interacción entre diversos componentes. \par
+La arquitectura propuesta se muestra en la Fig. \ref{fig:ROSGral}. Se utiliza la visión proporcionada por SSL, la cual reporta la pose de cada robot. Para los distintos componentes que se implementantan se utiliza ROS. La utilización de ROS permite tener un sistema modular, facilitando la interacción y reemplazo de los diversos componentes. Aunque la arquitectura presentada está pensada en Robocup SSL, es posible reemplazar componentes para enfocar el sistema a otro problema. \par
 
 % e requiere de un controlador central el cual tiene acceso al sistema de visión proporcionado por la liga de Robocup Small Size League. Este sistema aporta la posición del robot mediante cámaras en la parte superior de una cancha. El controlador está encargado de procesar la información de la posción del robot y realizar el cálculo de las trayectorias al lugar destino que se defina. Para realizar la comunicación entre los distintos componentes se utiliza ROS.\par
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
@@ -111,7 +135,7 @@ La arquitectura propuesta se muestra en la Fig. \ref{fig:ROSGral}. Es necesario 
 \subsection*{VISIÓN}
 Este es un componente proporcionado por SSL. El componente utiliza las imágenes obtenidas de dos cámaras colocadas en la parte superior de la cancha, las procesa y obtiene la posición y orientación de cada robot así como la posición de la pelota. El componente no está implementando en ROS pero sus salidas son adaptadas a ROS para poder utilizarlo.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{ESTRATEGIAS}
+\subsection*{PLANIFICACIÓN}
 Este componente es el encargado de realizar la planeación de tareas para todos los robots del equipo que se encuentren en el juego. Obtiene las posiciones de todos los elementos del juego de la visión así como las posiciones esperadas en un futuro de cada nodo de trayectorias.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{TRAYECTORIAS}
@@ -120,7 +144,7 @@ Cada robot cuenta con su nodo de trayectorias. Éste nodo recibe la posición ac
 \subsection*{COMUNICACIÓN}
 Este nodo recibe la velocidad del robot deseada en cada ciclo y la envía al robot. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{DISEÑO DEL ROBOT}
+\section*{ESTRUCTURA DEL ROBOT}
 
 Realizando un análisis de los robots de la liga, se determinó que la velocidad máxima deseada del robot se estableciera en 3.5 m/s. Igualmente, la carga que el robot debe soportar se estableció en 2.5 Kg. Debido a la velocidad del juego, es común que ocurran colisiones entre ellos por lo que el exterior del robot debe ser de un material resistente además contar con piezas fácilmente reemplazables.\par
 
@@ -137,10 +161,10 @@ La electrónica del robot se compone de una tarjeta de desarrollo MOJO la cual t
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{CARCASA Y BASE}
-La base es la pieza en la cual se ensamblan el resto mientras que la carcasa protege al resto del robot de posibles impactos durante su funcionamiento. Estas piezas constituyen las piezas de mayores dimensiones en el dise\~no por lo que son manufactaras usando plástico HIPS al ofrecer mejores resultados en piezas de grandes dimensiones. La carcasa est\'a formada por 4 piezas \'unicas. Como parte de la carcasa se incluye el patrón necesario para que la visi\'on de la liga proporcione la posici\'on del robot.\par
+La base es la pieza en la cual se ensamblan el resto, mientras que la carcasa protege al robot de posibles impactos durante su utilización. Estas piezas constituyen las piezas de mayores dimensiones en el dise\~no por lo que son manufactaras usando plástico HIPS al ofrecer mejores resultados en piezas de grandes dimensiones. La carcasa est\'a formada por 4 piezas \'unicas. Como parte de la carcasa se incluye el patrón necesario para que la visi\'on de la liga proporcione la posici\'on del robot.\par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{ENERGÍA}
-Los componentes que requieren de electricidad para funcionar son tres: mecanismos para el movimiento, para la pelota y el cómputo. Cada uno utiliza su propia batería LiPo para tenerlos aislados entre si, para la comunicación entre ellos se utilizan optocopladores. Los mecanismos para el movimiento, motores y ESC son alimentados por una batería de 12 V. Los mecanismos para la pelota, Kickers y dribbler, son alimentados por una batería de 12 V. El componente de cómputo es alimentado por una batería de 7 V.
+Los componentes que requieren de electricidad para funcionar son tres: mecanismos para el movimiento, para la pelota y el cómputo. Cada uno utiliza su propia batería LiPo para tenerlos aislados eléctricamente entre si, para la comunicación entre ellos se utilizan optocopladores. Los mecanismos para el movimiento, motores y ESC son alimentados por una batería de 12 V. Los mecanismos para la pelota, Kickers y dribbler, son alimentados por una batería de 12 V. El componente de cómputo es alimentado por una batería de 7 V.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{MECANISMOS PARA MOVIMIENTO DEL ROBOT}
 
@@ -150,7 +174,7 @@ La mayoria de los diseños de ruedas omnidireccionales comerciales están enfoca
 
 Los factores más importantes en el diseño de la rueda es la facilidad de ser ensamblada y la resistencia del material utilizado. El diseño final utilizado utiliza cuatro piezas únicas, de las cuales 2 son de diseño propio: una pieza de plástico ABS (\ref{fig:ruedaOmni}) y 21 rodillos de aluminio; y dos piezas comerciales: 1 cable de acero y 21 orings. \par
 
-Como solamente una pieza conforma el esqueleto de la rueda, se simplifica el ensablado además de hacer ser más resistente comparado con otras versiones que utilzan varias piezas como esqueleto. Adicionalmente, el radio de la rueda así como el número de rodillos utilizados favorece un funcionamiento efectivo de la rueda comparado con versiones de menor tamaño o menor número de rodillos.\par
+Como solamente una pieza conforma el esqueleto de la rueda, se simplifica el ensablado además de hacer ser más resistente comparado con otras versiones que utilzan varias piezas como esqueleto. Adicionalmente, el radio de la rueda así como el número de rodillos utilizados favorece un funcionamiento eficiente de la rueda comparado con versiones de menor tamaño o menor número de rodillos.\par
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
@@ -163,7 +187,7 @@ Como solamente una pieza conforma el esqueleto de la rueda, se simplifica el ens
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{REDUCTOR}
-El motor utilizado es Maxon 200142. Este motor tiene una velocidad sin carga de 4370 RPM (nominal de 2940 RPM). Dados los requerimientos de velocidad y peso soportado del robot, es neceario utilizar un reductor de velocidad de 3.5. Se utiliza un reductor conformado por engranes cilíndricos rectos de metal. Se utilizan engranes comerciales debido a la necesidad de contar con alta eficiencia en la transmisión de la energía además de tener que ser resistentes en altas velocidades. \par
+El motor utilizado es Maxon 200142. Este motor tiene una velocidad sin carga de 4370 RPM (nominal de 2940 RPM). Dados los requerimientos de velocidad y peso establecidos, es neceario utilizar un reductor de velocidad de 2.5. Se utiliza un reductor conformado por engranes cilíndricos rectos de metal. Se utilizan engranes comerciales debido a la necesidad de contar con alta eficiencia en la transmisión de la energía además de tener que ser resistentes en altas velocidades. \par
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{ELECTRONIC SPEED CONTROLLER (ESC)}
 Se utiliza un ESC por motor que sirve de interfaz entre la FPGA que envía una señal PWM y el motor. Este componente permite aisalar eléctricamente la FPGA (que utiliza voltaje TTL) de los motores (que utilizan 12V). Se utiliza un modelo de ESC dedicado a drones multihélice debido a la rapidez de respuesta que estos ofrecen y que resulta necesaria para el correcto funcionamiento de cada motor.\par 
@@ -199,9 +223,9 @@ Debido a que es necesario controlar los 4 motores así como otros componentes, e
   \item Recibir los datos del XBee.
   \item Calcular la velocidad de cada motor mediante la señal de cada sensor hall.
   \item Mandar la velocidad deseada a cada ESC mediante PWM.
-  \item Activar el dribbler
-  \item Activar el kicker
-  \item Recibir y procesar la señal de sensores adicionales
+  \item Activar el dribbler.
+  \item Activar el kicker.
+  \item Recibir y procesar la señal de sensores adicionales.
 \end{enumerate}
 La FPGA se comunica con el Microcontrolador mediante SPI y Memory Mapping. Envía las velocidades deseadas \(X, Y y \omega\) así como las velocidades reales de cada motor y recibe las velocidades deseadas para cada motor.\par
 
@@ -212,7 +236,7 @@ En cada ciclo del microcontrolador, se reciben las velocidades deseadas \(X, Y y
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{COMUNICACIÓN}
-Para el control del robot es necesario contar con comunicación inalámbrica (\'unicamente esta prohibido usar bluetooth). Se opt\'o por utilizar Wifi debido a la gran adopci\'on que tiene esta tecnología permitiendo utilizar practicamente cualquier equipo de cómputo para el control del robot. En específico, se utiliza XBee Wifi por su tamaño y utilizar voltaje TTL siendo compatible con la FPGA. Se utiliza direccionamiento estático para tener control de las IPs de cada robot, además de facilitar la conexión inicial con el access point. \par %El robot es capaz de reportar las velocidades deseadas calculadas mediante WiFi con fines de \par
+Para el control del robot es necesario contar con comunicación inalámbrica (\'unicamente esta prohibido usar bluetooth). Se opt\'o por utilizar Wifi debido a la gran adopci\'on que tiene esta tecnología permitiendo utilizar practicamente cualquier equipo de cómputo para el control del robot. En específico, se utiliza XBee Wifi por su tamaño y utilizar voltaje TTL siendo compatible con la FPGA. Se utiliza direccionamiento estático para tener control de las IPs de cada robot, además de facilitar la conexión inicial con el access point. Para favorecer un diseño modular, el resto de los componentes son agnósticos a la tecnología utilizada para la comunicación. \par %El robot es capaz de reportar las velocidades deseadas calculadas mediante WiFi con fines de \par
 % Aunque existen diversos métodos de comunicación inalámbrica, se decidió utilizar WiFi debido a la facilidad de adaptar cualquier computadora para ser utilizada con el robot. En el robot se utiliza un radio XBee Wifi debido a las diversas facilidades que ofrece la plataforma de XBee además de ser conveniente su tamaño y alimentación (3.3V). \par
 \subsection*{MOVIMIENTO OMNIDIRECCIONAL}
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
@@ -223,7 +247,7 @@ Para el control del robot es necesario contar con comunicación inalámbrica (\'
   \label{fig:angFzaDiag}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%%
-A partir de un movimiento deseado, expresado en el vector de velocidades deseadas \( V_l= \begin{pmatrix} v_x & v_y & \omega \end{pmatrix}^{T} \), es necesario descomponerlo en velocidades de motores deseadas \( V_m= \begin {pmatrix} m_1 & m_2 & m_3 & m_4 \end{pmatrix}^{T} \). 
+A partir de un movimiento deseado, expresado en el vector de velocidades deseadas del robot \( V_l= \begin{pmatrix} v_x & v_y & \omega \end{pmatrix}^{T} \), es necesario descomponerlo en velocidades de motores deseadas \( V_m= \begin {pmatrix} m_1 & m_2 & m_3 & m_4 \end{pmatrix}^{T} \). 
 
 A partir de la ecuacion general de fuerza Eqn. (\ref{eq:FMA}) se puede derivar la Eqn. (\ref{eq:fmaMots}) específica para el caso de cuatro motores. Debido a las ruedas omnidireccionales, cada motor aporta en los componentes de X y Y. Utilizando el diagrama de la Fig. \ref{fig:angFzaDiag}, es posible derivar la Eqn. ~(\ref{eq:max1}) para el motor 1 en X y Eqn. ~(\ref{eq:may1} para el motor 1 un Y. Similarmente, se pueden obtener las ecuaciones para los otros motores.\par
 %%%%%%%%%%%%%%%% Equation %%%%%%%%%%%%%%%%%%
@@ -354,7 +378,7 @@ Para poder realizar la transformación de la velocidad deseada en el espacio a v
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{CONTROL}
-Para el control a bajo nivel, se utiliza la retroalimentación que otorga cada motor, implementando un control PI a nivel motor. El esquema general del algoritmo de control utilizado se muestra en la Fig. \ref{fig:ctrl}. La sintonización de las variables se realiza a mano siguiendo el método de Ziegler - Nicholson. \par
+Para el control a bajo nivel, utilizando la retroalimentación que otorga cada motor, se implementó un control PI a nivel motor. El esquema general del algoritmo de control utilizado se muestra en la Fig. \ref{fig:ctrl}. La sintonización de las variables se realiza a mano siguiendo el método de Ziegler - Nicholson. \par
 % Se incorporó un PI a nivel motor, utilizando el método de Ziegler - Nicholson para realizar la sintonización de las variables.
 Adicional al control PI por motor, se cuenta con la retroalimentación de la visión gracias a la cual se puede calcular y corregir la trayectoria del robot al enviar continuamente actualizaciones de la velocidad deseada (30 Hz). 
 % En la Fig. \ref{fig:visionPrueba} se muestran las trayectorias seguidas por el robot al utilizar solamente el control PI así como utilizando el control PI y la retroalimentción de la visión.
@@ -369,16 +393,18 @@ Adicional al control PI por motor, se cuenta con la retroalimentación de la vis
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{RESULTADOS}
-Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 3.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
+\section*{EXPERIMENTACIÓN y RESULTADOS}
+% Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 3.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
+
 En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente. \par
 Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ante cada direccion con control PI sin visión y con visión. En la Fig. \ref{fig:visionPruebasRetro} se pueden ver los resultados de estas pruebas.Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que practiamente no se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot. \par
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
 \begin{figure}
   \centering
-    \includegraphics[width=8cm]{VelocidadM4.png}
+    \includegraphics[width=8cm]{VelocidadM4.eps}
   \caption{Velocidad real vs Velocidad deseada}
   \label{fig:realVSdes}
 \end{figure}
@@ -418,8 +444,9 @@ Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ant
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{CONCLUSIÓN}
-La construcción del robot cumple con las especificaciones establecidas en las reglas F180. El movimiento del robot es correcto y se puede patear y utilizar el \textit{dribbler}. El algoritmo de control funciona correctamente aunque es posible realizar una mejor sintonización. Se cuenta con la arquitectura general del sistema, pudiendo ir agregando nodos y modificandolos de ser necesario. \par
-Como trabajo futuro se propone un método de sintonización automático para el sistema de control. Adicionalmente, es necesario implementar un algoritmo de evación de obstáculos así como de especificar tareas para cada uno de los robots del equipo. \par
+Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 2.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
+La utilización de ROS para el sistema así como el funcionamiento de la arquitectura propuesta ha sido satisfactorio. La modularidad entre sus componentes permite intercambiarlos si se requiere una función distinta sin afectar el comportamiento del resto del sistema. \par
+Como trabajo futuro se propone un método de sintonización automático para el sistema de control. Adicionalmente, es necesario implementar un algoritmo de evación de obstáculos así como un módulo asignación de tareas. \par
 
 
 % \section*{FOOTNOTES\protect\footnotemark}

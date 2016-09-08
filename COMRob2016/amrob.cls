@@ -835,7 +835,7 @@
      \titlepage
      \null\vfil
      \begin{center}
-        {\tensfb ABSTRACT}
+        {\tensfb RESUMEN}
         \@endparpenalty\@M
      \end{center}}
      {\par\vfil\null\endtitlepage}
@@ -843,10 +843,10 @@
   \newenvironment{abstract}{%
      \if@twocolumn
         \normalsize\par\addvspace{12pt}\noindent
-        {\tensfb ABSTRACT}\par
+        {\tensfb RESUMEN}\par
      \else
         \begin{center}
-          {{\tensfb ABSTRACT}\vspace{-.5em}\vspace{\z@}}
+          {{\tensfb RESUMEN}\vspace{-.5em}\vspace{\z@}}
         \end{center}
         \quotation
      \fi}

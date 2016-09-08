@@ -4,45 +4,45 @@ The top-level auxiliary file: amrob.aux
 The style file: amrob.bst.bst
 Database file #1: amrob.bib.bib
 Warning--empty year in rojasHist
-You've used 4 entries,
+You've used 3 entries,
             1984 wiz_defined-function locations,
-            509 strings with 4048 characters,
-and the built_in function-call counts, 596 in all, are:
-= -- 42
-> -- 19
+            503 strings with 3949 characters,
+and the built_in function-call counts, 455 in all, are:
+= -- 32
+> -- 15
 < -- 0
-+ -- 9
-- -- 5
-* -- 17
-:= -- 94
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 4
++ -- 7
+- -- 4
+* -- 15
+:= -- 74
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 26
-empty$ -- 84
-format.name$ -- 5
-if$ -- 140
+cite$ -- 4
+duplicate$ -- 20
+empty$ -- 62
+format.name$ -- 4
+if$ -- 105
 int.to.chr$ -- 0
-int.to.str$ -- 4
+int.to.str$ -- 3
 missing$ -- 1
-newline$ -- 23
-num.names$ -- 4
-pop$ -- 27
+newline$ -- 18
+num.names$ -- 3
+pop$ -- 18
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 13
+skip$ -- 10
 stack$ -- 0
 substring$ -- 0
-swap$ -- 5
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 4
-width$ -- 5
-write$ -- 42
+while$ -- 3
+width$ -- 4
+write$ -- 32
 (There was 1 warning)

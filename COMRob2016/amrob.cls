@@ -1164,7 +1164,7 @@
 % Acknowledgement environment
 
 \newenvironment{acknowledgment}{%
-   \section*{ACKNOWLEDGMENT}}{\par\addvspace{12pt}}
+   \section*{AGRADECIMIENTOS}}{\par\addvspace{12pt}}
 
 % The following are the new theorem definitions
 

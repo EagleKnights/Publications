@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex amrob"] 1473440205 "amrob.aux" "amrob.bbl" "amrob" 1473440207
-  "amrob.aux" 1473440207 2576 927c066921725980ac3b7341df75cede ""
+["bibtex amrob"] 1473443975 "amrob.aux" "amrob.bbl" "amrob" 1473453033
+  "amrob.aux" 1473453032 2576 927c066921725980ac3b7341df75cede ""
   "amrob.bcf" 0 -1 0 ""
   "amrob.bib" 1473440195 5158 6bcc4610a1fe12dc17df95eef2e4ac25 ""
   "amrob.bst.bst" 0 -1 0 ""
   (generated)
   "amrob.bbl"
   "amrob.blg"
-["pdflatex"] 1473440205 "amrob.tex" "amrob.pdf" "amrob" 1473440207
+["pdflatex"] 1473453028 "amrob.tex" "amrob.pdf" "amrob" 1473453033
   "./Figures/DistErr-eps-converted-to.pdf" 1473394593 27702 1c4d2f1e09f762cd2a8de7d303832b16 ""
   "./Figures/DistErr.eps" 1473391196 43432 88d58c8fccd6b0a1be345d8d11ae0754 ""
   "./Figures/VelocidadM4-eps-converted-to.pdf" 1473368014 9406 2084dd1eea9afa7410569eb473220819 ""
@@ -124,11 +124,11 @@
   "Figures/output1.eps" 1473360491 85076 b193be070d0afcf3aca7c08a58986fbd ""
   "Figures/realVS3D.png" 1473123508 257447 4bda3e5708709194e1715d83486bf1d3 ""
   "Figures/rueda.png" 1473123510 62943 e3a67bb639c32a9d75e167645d16b152 ""
-  "amrob.aux" 1473440207 2576 927c066921725980ac3b7341df75cede ""
-  "amrob.bbl" 1473440205 2247 d55e3f361fc4e9cfeb04bf34d30028a2 "bibtex amrob"
-  "amrob.cls" 1473309104 44617 ce02690d04a8dda84a96234f2e7fce6a ""
-  "amrob.tex" 1473440186 42337 db2c00ed6edb0b6e894e1d97509c23a5 ""
+  "amrob.aux" 1473453032 2576 927c066921725980ac3b7341df75cede ""
+  "amrob.bbl" 1473443975 2247 d55e3f361fc4e9cfeb04bf34d30028a2 "bibtex amrob"
+  "amrob.cls" 1473452771 44618 5e764b67f0359189fa3f0a7f41ec4c1c ""
+  "amrob.tex" 1473452966 41528 82bc171740c37f41c8779cde60706a98 ""
   (generated)
-  "amrob.pdf"
   "amrob.aux"
   "amrob.log"
+  "amrob.pdf"

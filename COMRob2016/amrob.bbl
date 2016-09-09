@@ -5,15 +5,16 @@ Corke, P., 2011.
 \newblock {\em Robotics, Vision and Control: Fundamental Algorithms in MATLAB}.
 \newblock Springer Tracts in Advanced Robotics. Springer Berlin Heidelberg.
 
-\bibitem{rojasHist}
-Rojas, R.
-\newblock {A} {S}hort {H}istory of {O}mnidirectional {W}heels.
-\newblock http://ftp.inf.fu-berlin.de/pub/Rojas/omniwheel/shortomni.pdf.
+\bibitem{rojas2005short}
+Rojas, R., 2005.
+\newblock ``A short history of omnidirectional wheels''.
+\newblock {\em See also URL http://robocup. mi. fu-berlin. de/buch/shortomni.
+  pdf}.
 
-\bibitem{rojasForster06}
-Rojas, R., and Förster, G., 2006.
-\newblock ``Holonomic control of a robot with an omnidirectional drive.''.
-\newblock {\em Künstliche Intelligenz, BöttcherlIT Verlag}.
+\bibitem{rojas2006holonomic}
+Rojas, R., and F{\"o}rster, A.~G., 2006.
+\newblock ``Holonomic control of a robot with an omnidirectional drive''.
+\newblock {\em KI-K{\"u}nstliche Intelligenz, \textbf{ 20}}(2), pp.~12--17.
 
 \bibitem{ashmore2002omni}
 Ashmore, M., and Barnes, N., 2002.

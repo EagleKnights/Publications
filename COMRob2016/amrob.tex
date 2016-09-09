@@ -3,6 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{mathtools}
+\usepackage{color}
+
+\newcommand{\TODO}[1]{{\color{red}{TODO: {#1}}}}
 
 \special{papersize=8.5in,11in}
 
@@ -29,18 +32,17 @@
 
 %%% You need to remove 'DRAFT: ' in the title for the final submitted version.
 
-\title{Diseño y Desarrollo de un Robot Omnidireccional para Aplicaciones Colaborativas\thanks{Investigación con patrocinio de la Asociación Mexicana de Cultura A.C.}}
+\title{Diseño y Desarrollo de un Robot Omnidireccional para Aplicaciones Colaborativas\thanks{Se agradece el patrocinio a esta investigación de la Asociación Mexicana de Cultura A.C.}}
 
 
 %%% first author
 \author{Edgar Granados Osegueda 
-\thanks{Rio Hondo 1, Ciudad de México 01080, [edgar.granados, marco.morales, jose.romerovelazquez]@itam.mx}
     \affiliation{
 	Departamento de Sistemas Digitales \\
   ITAM\\
-	% Rio Hondo 1, Ciudad de México, 01080\\
+	Rio Hondo 1, Ciudad de México, 01080\\
 	% % Country (only if not MEXICO)\\
- %    edgar.granados@itam.mx
+ 	edgar.granados@itam.mx
     }	
 }
 
@@ -54,9 +56,9 @@
     \affiliation{
     Departamento de Sistemas Digitales\\
     ITAM\\
- %  Rio Hondo 1, Ciudad de México, 01080\\
+  	Rio Hondo 1, Ciudad de México, 01080\\
 	% % Country (only if not MEXICO)\\
-	% marco.morales@itam.mx
+	marco.morales@itam.mx
     }
 }
 
@@ -67,9 +69,9 @@
     \affiliation{
     Departamento de Sistemas Digitales \\
     ITAM\\
-  % Rio Hondo 1, Ciudad de México, 01080\\
+    Rio Hondo 1, Ciudad de México, 01080\\
   % Country (only if not MEXICO)\\
-  % jose.romerovelazquez@itam.mx
+  	jose.romerovelazquez@itam.mx
     }
 }
 
@@ -80,18 +82,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-{\it Este artículo describe el diseño y construcción de un robot movil omnidireccional para aplicaciones colaborativas. Tambien se describe el modelo cinemático y un algoritmo de control. Se detalla la arquitectura del sistema basada en ROS que permite su uso en aplicaciones colaborativas. Finalmente, se muestran resultados de desempeño del robot que satisfacen los criterios de diseño.
+{\it 
+En este artículo se presenta el diseño y construcción de un robot móvil omnidireccional para aplicaciones colaborativas. El modelo cinemático que describe  el movimiento omnidireccional del robot es implementado con un algoritmo de control a bordo del robot en \TODO{MM: menciona el hardware del FPGA/micro} y con un programa externo al que se accede desde el Robot Operating System (ROS). Los experimentos realizados ilustran el buen comportamiento del sistema diseñado.
 }
 \end{abstract}
 % \\
 % \\
-% The spacing between abstract and the text heading is two line spaces.  The primary text heading is  boldface in all capitals, flushed left with the left margin.  The spacing between the  text and the heading is also two line spaces.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{INTRODUCCIÓN}
 
+Actualmente, los robots móviles son utilizados en un amplio rango de actividades, como exploración (e.g., DEPTHX en exploración acuática, y MER de la Nasa en la exploración de Marte) y transporte. Existen diversos tipos de robots móviles incluyendo los humanoides (e.g, el Nao), los voladores y los que se mueven con ruedas. Estos últimos tienen una estructura mecánica y modelos relativamente sencillos \cite{corke2011robotics}. Por esto, son una muy buena opción para realizar tareas sobre pisos planos y donde la reacción a los cambios de dirección sea crucial.
 
-Actualmente, los robots móviles pueden ser utilizados en un amplio rango de actividades. Aunque existen diversos tipos de robots móviles, algunos de los más populares son a base de ruedas. Por la efectividad y familiaridad de vehículos a base de ruedas, se vuelven una opción lógica para implementar robots móviles \cite{corke2011robotics}. Algunos robots móviles utilizados en diversas aplicaciones incluyen: DEPTHX (exploración acuática), MER de la NASA (exploración de marte) y el humanoide NAO. \par 
+
 Un robot móvil omnidireccional es un tipo de robot a base de ruedas con 3 grados de libertad (holonómico). La característica omnidireccional la obtiene del uso de ruedas omnidireccionales con el respectivo modelo cinemático. Una ventaja de éste tipo de robot es que puede alcanzar cualquier pose sin realizar maniobras auxiliares. Debido a esto, la principal aplicación de robots omnidireccionales es en ambientes dinámicos con poco espacio para maniobrar como fábricas, hospitales y almacenes. \par
 Para contar con un sistema homogéneo de robots para investigación, se requiere de un diseño de robot versatil. Es necesario que sea fácilmente adaptado y usado en ambientes distintos por lo que un diseño modular es preferible. Diseñar un robot móvil omnidireccional amplía el tipo de investigación que se puede realizar, pudiendo adaptarse a aplicaciones donde se necesita de robots no holonómicos. Debido al desarrollo que se tiene en Robocup Small Size League, se toman las especificaciones físicas de ésta liga como marco de referencia para el diseño del robot. \par
 En la solución presentada, se detalla la arquitectura del sistema. El cómputo externo al robot está implementando en ROS para aprovechar las modulridad que ofrece. Se detalla la estructura del robot, incluyendo los mecanismos para movimiento del robot así como el cómpute interno. En la sección de algoritmos se presenta el modelo cinemático desarrollado y el algoritmo de control utilizado. \par

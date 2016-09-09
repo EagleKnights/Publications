@@ -88,7 +88,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-{\it Este artículo describe el diseño de un robot movil omnidireccional para Robocup Small Size League, así como su construcción. Igualmente, se describen los algoritmos utilizados para lograr el movimiento omnidireccional así como el algoritmo de control utilizado. Se detalla la arquitectura del sistema, en el cual se utiliza ROS. Como resultados, se muestra el movimiento obtenido con la solución. \par
+{\it Este artículo describe el diseño de un robot movil omnidireccional para aplicaciones colaborativas, así como su construcción. Tambien, se describe el modelo cinemático utilizado para lograr el movimiento omnidireccional así como el algoritmo de control. Se detalla la arquitectura del sistema, que permite su utilización en ROS. Finalmente, se muestran los resultados en aplicaciones colaborativas. \par
 }
 \end{abstract}
 % \\
@@ -98,7 +98,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{INTRODUCCIÓN}
 
-Con la finalidad de contar con un sistema para realizar investigación en robótica colaborativa multi-agente, se presenta el diseño de un robot móvil omnidireccional. Se selccionó éste tipo de robot debido a las características de movimiento que ofrece. El diseño es modular para favorecer la adaptación a distintos escenarios de prueba. El sistema se compone de un equipo homogéneo de robots omnidireccionales y un controlador implementado con ROS para facilitar la modularidad y el mantenimiento del código. Con la finalidad de acotar el problema de diseño físico además de tener una plataforma de prueba, se toma como base las especificaciones y plataforma de Robocup Small Size League. 
+
+Actualmente, los robots móviles pueden ser utilizados en un amplio rango de actividades. Aunque existen diversos tipos de robots móviles, algunos de los más populares son a base de ruedas. Por la efectividad y familiaridad de vehículos a base de ruedas, se vuelven una opción lógica para implementar robots móviles \cite{corke2011robotics}. Algunos robots móviles utilizados en diversas aplicaciones incluyen: DEPTHX (exploración acuática), MER de la NASA (exploración de marte) y el humanoide NAO. \par 
+Un robot móvil omnidireccional es un tipo de robot a base de ruedas con 3 grados de libertad (holonómico). La característica omnidireccional la obtiene del uso de ruedas omnidireccionales con el respectivo modelo cinemático. Una ventaja de éste tipo de robot es que puede alcanzar cualquier pose sin realizar maniobras auxiliares. Debido a esto, la principal aplicación de robots omnidireccionales es en ambientes dinámicos con poco espacio para maniobrar como fábricas, hospitales y almacenes. \par
+Para contar con un sistema homogéneo de robots para investigación, se requiere de un diseño de robot versatil. Es necesario que sea fácilmente adaptado y usado en ambientes distintos por lo que un diseño modular es preferible. Diseñar un robot móvil omnidireccional amplía el tipo de investigación que se puede realizar, pudiendo adaptarse a aplicaciones donde se necesita de robots no holonómicos. Debido al desarrollo que se tiene en Robocup Small Size League, se toman las especificaciones físicas de ésta liga como marco de referencia para el diseño del robot. \par
+En la solución presentada, se detalla la arquitectura del sistema. El cómputo externo al robot está implementando en ROS para aprovechar las modulridad que ofrece. Se detalla la estructura del robot, incluyendo los mecanismos para movimiento del robot así como el cómpute interno. En la sección de algoritmos se presenta el modelo cinemático desarrollado y el algoritmo de control utilizado. \par
+Para validar el modelo cinemático desarrollado, se realizaron experimentos de seguimiento de trayectorias con distintas condiciones. También se presenta la respuesta obtenida con la implementación del algoritmo de control. \par
+
+% -Motivacion
+%   -Aplicaciones de robots moviles
+%   -Aplicaciones y ventajas de robots omnidireccionales
+% -Problema
+%   -Robot que permita: a), b)
+%     -Mencionar verstilidad para su uso en robocup SSL, investigacion, etc.
+% -Solucion
+% -Resultados
+
+
+% Con la finalidad de contar con un sistema para realizar investigación en robótica colaborativa multi-agente, se presenta el diseño de un robot móvil omnidireccional. Se selccionó éste tipo de robot debido a las características de movimiento que ofrece. El diseño es modular para favorecer la adaptación a distintos escenarios de prueba. El sistema se compone de un equipo homogéneo de robots omnidireccionales y un controlador implementado con ROS para facilitar la modularidad y el mantenimiento del código. Con la finalidad de acotar el problema de diseño físico además de tener una plataforma de prueba, se toma como base las especificaciones y plataforma de Robocup Small Size League. 
 
 % -Motivación
 % -Definición del Problema
@@ -110,17 +127,18 @@ Con la finalidad de contar con un sistema para realizar investigación en robót
 % Para poder participar en la competencia de Robocup Small Size League (SSL), es necesario cumplir con las especificaciones del reglamento F180 de la liga. Dentro de las características más importantes se encuentra que el robot debe caber dentro de un cilindro de 18 cm de altura por 15 cm de díametro. \par
 % Adem\'as de participar en Robocup, es necesario que el robot se pueda adaptar fácilmente a otros escenarios de investigación de Robótica. \par
 \section*{MARCO DE REFERENCIA}
-Un robot omnidireccional es aquel que puede moverse de un punto A a un punto B en línea recta mientras gira sobre su propio eje para llegar en una orientación dada \cite{rojasHist}. Para obtener un movimiento omnidireccional con un robot de ruedas concéntricas, es necesario contar con por lo menos 3 ruedas omnidireccionales colocadas con distintos ángulos de separación \cite{rojasForster06}. Un número de ruedas adicional proporciona redundancia, siendo 4 ruedas el dise\~no mas popular y el seleccionado. \par
-
+Un robot omnidireccional es aquel que puede moverse de un punto A a un punto B en línea recta mientras gira sobre su propio eje para llegar en una orientación dada \cite{rojasHist}. Para obtener un movimiento omnidireccional con un robot de ruedas concéntricas, es necesario contar con por lo menos 3 ruedas omnidireccionales colocadas con distintos ángulos de separación \cite{rojasForster06}. Un número de ruedas adicional proporciona redundancia por lo que 4 ruedas es el dise\~no mas popular. \par
+Existen diversos diseños de rueda omnidireccional. Se pueden clasificar en ortogonales y universales \cite{ashmore2002omni}. Las primeras fueron utilizadas brevemente en Robocup SSL por el equipo de la Universidad de Cornell \cite{d2000cornell} aunque dejaron de utilizarlas debido a que no daban la tracción necesaria para un control adecuado a altas velocidades sustiyendolas por ruedas universales \cite{purwin2003cornell}. Son dos los diseños más populres de ruedas omnidireccionales universales. La rueda Mecanum, conformada por rodillos en un ángulo en la periferia de la rueda. El principal problema que presenta ésta rueda es el espacio necesario además de ser un diseño complejo conceptual y físicamente. El otro tipo de rueda cuenta con rodillos alineados al eje principal de la rueda. La ventaja de ésta rueda radica en su diseño compacto aunque el prefil de la rueda suele no ser perfecto debido a los rodillos. \par
+La maniobrabilidad que ofrece un robot omnidireccional constituye su principal ventaja. Algunos robots que buscan aprovechar esto son: OmniBot de la NASA, el Airtrax ATX-3000 y la \textit{OMNI-chair}. El primero desarrollado como un robot altamente maniobrable en ambientes peligrosos \cite{houshangi1999omnibot}. El segundo es un levantacargas omnidireccional enfocado a almacenes \cite{aduascualictei2011practical}. El último, consitió en un proyecto para desarrollar una silla de ruedas omnidireccional y darle mayor capacidad de movimiento a su usuario \cite{borgolte1998architectural}. 
+Lograr un movimiento correcto en un robot omnidireccional presenta diversos retos. Al utilizar por lo menos tres motores resulta escencial implementar un algoritmo de control eficiente. La mayoría de los equipos utilizan un control de velocidad sin embargo, en 2011 SKUBA presentó un control basado en el torque del motor \cite{chaisoskuba}. %\cite{skuba2011}. 
 % -Otros Robots Omnidireccionales, Control\par
-
-Específicamente, un robot de SSL debe caber dentro de un cilindro de 18 cm de altura por 15 cm de diámetro, siendo el diseño más eficiente (y el utilizado por todos los equipos) un robot cilíndrico con ruedas concéntricas. La liga cuenta con un sistema de visión el cual da la posición de cada robot y la pelota utilizada, para lo cual el robot debe cumplir con el \textit{patrón estandar} en la parte superior \cite{SSLrules2016}. Igualmente, es necesario contar con mecanismos para la pelota, los cuales son los encargados de mantener la pelota cerca del robot (\textit{dribbler}) y poder patear \textit{kickers}. \par
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \section*{DISEÑO DEL ROBOT}
 \section*{ARQUITECTURA DEL SISTEMA}
 % \section*{CONTROLADOR}
+
 La arquitectura propuesta se muestra en la Fig. \ref{fig:ROSGral}. Se utiliza la visión proporcionada por SSL, la cual reporta la pose de cada robot. Para los distintos componentes que se implementantan se utiliza ROS. La utilización de ROS permite tener un sistema modular, facilitando la interacción y reemplazo de los diversos componentes. Aunque la arquitectura presentada está pensada en Robocup SSL, es posible reemplazar componentes para enfocar el sistema a otro problema. \par
 
 % e requiere de un controlador central el cual tiene acceso al sistema de visión proporcionado por la liga de Robocup Small Size League. Este sistema aporta la posición del robot mediante cámaras en la parte superior de una cancha. El controlador está encargado de procesar la información de la posción del robot y realizar el cálculo de las trayectorias al lugar destino que se defina. Para realizar la comunicación entre los distintos componentes se utiliza ROS.\par
@@ -142,13 +160,14 @@ Este componente es el encargado de realizar la planeación de tareas para todos 
 \subsubsection*{TRAYECTORIAS}
 Cada robot cuenta con su nodo de trayectorias. Éste nodo recibe la posición actual, la deseada y el tiempo deseado del nodo de estrategias y se encarga de generar la trayectoria necesaria. De no ser posible generar la trayectoria deseada en el tiempo deseado, se reporta al nodo de Estrategias.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection*{COMUNICACIÓN}
+\subsubsection*{CONTROL A BAJO NIVEL}
 Este nodo recibe la velocidad del robot deseada en cada ciclo y la envía al robot. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{ESTRUCTURA DEL ROBOT}
-
-Realizando un análisis de los robots de la liga, se determinó que la velocidad máxima deseada del robot se estableciera en 3.5 m/s. Igualmente, la carga que el robot debe soportar se estableció en 2.5 Kg. Debido a la velocidad del juego, es común que ocurran colisiones entre ellos por lo que el exterior del robot debe ser de un material resistente además contar con piezas fácilmente reemplazables.\par
-
+Un robot de SSL debe caber dentro de un cilindro de 18 cm de altura por 15 cm de diámetro, siendo el diseño más eficiente un robot cilíndrico con ruedas concéntricas.
+%Igualmente, es necesario contar con mecanismos para la pelota, los cuales son los encargados de mantener la pelota cerca del robot (\textit{dribbler}) y poder patear \textit{kickers}. \par
+Realizando un análisis de los robots de la liga, se determinó que la velocidad máxima deseada del robot se estableciera en 3.5 m/s. Igualmente, la carga que el robot debe soportar se estableció en 2.5 Kg. Debido a la velocidad del juego, es común que ocurran colisiones entre ellos por lo que el exterior del robot debe ser de un material resistente además contar con piezas fácilmente reemplazables. Para ser reconocido por la visión de la liga, es necesario cumplir con el \textit{patrón estandar}. \par
+% La cuenta con un sistema de visión el cual da la posición de cada robot y la pelota utilizada, para lo cual el robot debe cumplir con el \textit{patrón estandar} en la parte superior \cite{SSLrules2016}. 
 Para poder realizar numerosas pruebas de las distintas partes que conforman al robot, se optó por utilizar el modelado por deposición fundida (impresión 3D). Adicionalmente, este método permite realizar diseños más complejos además de probarlos y validarlos rápidamente. Se utilizaron dos tipos de plástico: ABS y HIPS. Se realizó un diseño modular para facilitar futuras mejoras, asi como volverlo fácilmente adaptable a otros escenarios.\par
 
 La electrónica del robot se compone de una tarjeta de desarrollo MOJO la cual tiene una FPGA Spartan 6 XC6SLX9 y un microcontrolador ATmega32U4. Para la comunicaci\'on, se utiliza una tarjeta XBee WiFi. Para el control de los motores, se utiliza un ESC (Electronic Speed Controller) por motor. La interaccion de los componentes se muestra en \ref{fig:electGral}. \par
@@ -394,12 +413,14 @@ Adicional al control PI por motor, se cuenta con la retroalimentación de la vis
   \label{fig:ModRealVSdes}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{EXPERIMENTACIÓN y RESULTADOS}
 % Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 3.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
 
 En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente. \par
 Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ante cada direccion con control PI sin visión y con visión. En la Fig. \ref{fig:visionPruebasRetro} se pueden ver los resultados de estas pruebas.Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que practiamente no se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot. \par
+Utilizando los datos del experimento mencionado anteriormente, se puede obtener el error que tiene el robot en el tiempo. Definiendo el error como la diferencia entre la posición deseada y la actual, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Debido a las dimensiones del robot, se estableció un margen de 150 mm por lo que se detiene al alcanzar esa posición reportada por visión.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -417,7 +438,14 @@ Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ant
   \label{fig:visionPruebasRetro}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
-
+%%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+    \includegraphics[width=8cm]{DistErr.eps}
+  \caption{Robot Real vs Modelo 3D del Robot}
+  \label{fig:errorPlot}
+\end{figure}
+%%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 SEP 2016 17:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 SEP 2016 03:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,6 +527,25 @@ Underfull \hbox (badness 10000) detected at line 87
 []
  []
 
+
+Underfull \hbox (badness 1112) in paragraph at lines 106--106
+[]\OT1/ptm/m/n/10 Para val-i-dar el mod-elo cinem[]atico de-sar-rol-lado, se re
+-
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 130.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
+ [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+Non-PDF special ignored!
+
+]
 Package epstopdf Info: Source file: <./Figures/arqGeneral.eps>
 (epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 614331 bytes
@@ -536,36 +555,21 @@ Package epstopdf Info: Source file: <./Figures/arqGeneral.eps>
 (epstopdf)                    size: 120367 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/arqGeneral-eps-c
 onverted-to.pdf ./Figures/arqGeneral.eps>
-(epstopdf)             \includegraphics on input line 130.
+(epstopdf)             \includegraphics on input line 148.
 Package epstopdf Info: Output file is already uptodate.
-<./Figures/arqGeneral-eps-converted-to.pdf, id=1, 438.63875pt x 447.6725pt>
+
+<./Figures/arqGeneral-eps-converted-to.pdf, id=11, 438.63875pt x 447.6725pt>
 File: ./Figures/arqGeneral-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/arqGeneral-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/arqGeneral-eps-converted-to.pdf used on inpu
-t line 130.
+t line 148.
 (pdftex.def)             Requested size: 227.62204pt x 232.31287pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 131.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 149.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 131.
-
-Underfull \vbox (badness 1248) has occurred while \output is active []
-
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 139.
-
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 139.
- [1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-Non-PDF special ignored!
-
-]
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 149.
+ [2 <./Figures/arqGeneral-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <./Figures/diagElectronica.eps>
 (epstopdf)                    date: 2016-09-05 19:58:27
 (epstopdf)                    size: 301823 bytes
@@ -575,38 +579,35 @@ Package epstopdf Info: Source file: <./Figures/diagElectronica.eps>
 (epstopdf)                    size: 73668 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/diagElectronica-
 eps-converted-to.pdf ./Figures/diagElectronica.eps>
-(epstopdf)             \includegraphics on input line 158.
+(epstopdf)             \includegraphics on input line 177.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/diagElectronica-eps-converted-to.pdf, id=12, 385.44pt x 367.3725pt>
+<./Figures/diagElectronica-eps-converted-to.pdf, id=30, 385.44pt x 367.3725pt>
 File: ./Figures/diagElectronica-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/diagElectronica-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/diagElectronica-eps-converted-to.pdf used on
- input line 158.
+ input line 177.
 (pdftex.def)             Requested size: 227.62204pt x 216.94968pt.
 
-Underfull \vbox (badness 7238) has occurred while \output is active []
-
- [2 <./Figures/arqGeneral-eps-converted-to.pdf> <./Figures/diagElectronica-eps-
-converted-to.pdf>] <./Figures/rueda.png, id=53, 642.4pt x 481.8pt>
+<./Figures/rueda.png, id=31, 642.4pt x 481.8pt>
 File: ./Figures/rueda.png Graphic file (type png)
-
-<use ./Figures/rueda.png>
-Package pdftex.def Info: ./Figures/rueda.png used on input line 184.
+ <use ./Figures/rueda.png>
+Package pdftex.def Info: ./Figures/rueda.png used on input line 203.
 (pdftex.def)             Requested size: 227.62204pt x 170.71304pt.
 
-Underfull \vbox (badness 1337) has occurred while \output is active []
-
-
-<./Figures/circuitoKicker.png, id=55, 550.055pt x 377.41pt>
+[3 <./Figures/diagElectronica-eps-converted-to.pdf> <./Figures/rueda.png>]
+<./Figures/circuitoKicker.png, id=59, 550.055pt x 377.41pt>
 File: ./Figures/circuitoKicker.png Graphic file (type png)
 
 <use ./Figures/circuitoKicker.png>
-Package pdftex.def Info: ./Figures/circuitoKicker.png used on input line 202.
+Package pdftex.def Info: ./Figures/circuitoKicker.png used on input line 221.
 (pdftex.def)             Requested size: 227.62204pt x 156.1788pt.
- [3 <./Figures/rueda.png> <./Figures/circuitoKicker.png>]
-Underfull \hbox (badness 1122) in paragraph at lines 235--237
+
+Underfull \vbox (badness 1762) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 254--256
  \OT1/phv/m/n/10 MI-CRO-CON-TRO-LADOR \OT1/ptm/m/n/10 En cada ci-clo del mi-cro
 -con-tro-
  []
@@ -620,16 +621,20 @@ Package epstopdf Info: Source file: <./Figures/anglesRobot.eps>
 (epstopdf)                    size: 18107 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/anglesRobot-eps-
 converted-to.pdf ./Figures/anglesRobot.eps>
-(epstopdf)             \includegraphics on input line 247.
+(epstopdf)             \includegraphics on input line 266.
 Package epstopdf Info: Output file is already uptodate.
-<./Figures/anglesRobot-eps-converted-to.pdf, id=61, 466.74374pt x 459.7175pt>
+<./Figures/anglesRobot-eps-converted-to.pdf, id=60, 466.74374pt x 459.7175pt>
 File: ./Figures/anglesRobot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/anglesRobot-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/anglesRobot-eps-converted-to.pdf used on inp
-ut line 247.
+ut line 266.
 (pdftex.def)             Requested size: 227.62204pt x 224.1973pt.
- [4 <./Figures/anglesRobot-eps-converted-to.pdf>]
+
+Underfull \vbox (badness 3930) has occurred while \output is active []
+
+ [4 <./Figures/circuitoKicker.png>] [5 <./Figures/anglesRobot-eps-converted-to.
+pdf>]
 Package epstopdf Info: Source file: <./Figures/esquema_PID_motor.eps>
 (epstopdf)                    date: 2016-09-08 00:11:33
 (epstopdf)                    size: 314724 bytes
@@ -639,25 +644,23 @@ to.pdf>
 (epstopdf)                    size: 64123 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/esquema_PID_moto
 r-eps-converted-to.pdf ./Figures/esquema_PID_motor.eps>
-(epstopdf)             \includegraphics on input line 376.
+(epstopdf)             \includegraphics on input line 395.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/esquema_PID_motor-eps-converted-to.pdf, id=82, 775.89874pt x 125.468
+<./Figures/esquema_PID_motor-eps-converted-to.pdf, id=85, 775.89874pt x 125.468
 75pt>
 File: ./Figures/esquema_PID_motor-eps-converted-to.pdf Graphic file (type pdf)
  <use ./Figures/esquema_PID_motor-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/esquema_PID_motor-eps-converted-to.pdf used 
-on input line 376.
+on input line 395.
 (pdftex.def)             Requested size: 227.62204pt x 36.8081pt.
 
-<./Figures/realVS3D.png, id=83, 711.65875pt x 323.2075pt>
+<./Figures/realVS3D.png, id=86, 711.65875pt x 323.2075pt>
 File: ./Figures/realVS3D.png Graphic file (type png)
 
 <use ./Figures/realVS3D.png>
-Package pdftex.def Info: ./Figures/realVS3D.png used on input line 392.
+Package pdftex.def Info: ./Figures/realVS3D.png used on input line 411.
 (pdftex.def)             Requested size: 227.62204pt x 103.37425pt.
- [5 <./Figures/esquema_PID_motor-eps-converted-to.pdf> <./Figures/realVS3D.png>
-]
 Package epstopdf Info: Source file: <./Figures/VelocidadM4.eps>
 (epstopdf)                    date: 2016-09-08 15:52:33
 (epstopdf)                    size: 31182 bytes
@@ -667,15 +670,15 @@ Package epstopdf Info: Source file: <./Figures/VelocidadM4.eps>
 (epstopdf)                    size: 9406 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/VelocidadM4-eps-
 converted-to.pdf ./Figures/VelocidadM4.eps>
-(epstopdf)             \includegraphics on input line 409.
+(epstopdf)             \includegraphics on input line 430.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/VelocidadM4-eps-converted-to.pdf, id=113, 361.35pt x 252.945pt>
+<./Figures/VelocidadM4-eps-converted-to.pdf, id=87, 361.35pt x 252.945pt>
 File: ./Figures/VelocidadM4-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/VelocidadM4-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/VelocidadM4-eps-converted-to.pdf used on inp
-ut line 409.
+ut line 430.
 (pdftex.def)             Requested size: 227.62204pt x 159.33688pt.
 Package epstopdf Info: Source file: <./Figures/output1.eps>
 (epstopdf)                    date: 2016-09-08 13:48:11
@@ -685,65 +688,72 @@ Package epstopdf Info: Source file: <./Figures/output1.eps>
 (epstopdf)                    size: 63806 bytes
 (epstopdf)             Command: <repstopdf --outfile=./Figures/output1-eps-conv
 erted-to.pdf ./Figures/output1.eps>
-(epstopdf)             \includegraphics on input line 415.
+(epstopdf)             \includegraphics on input line 436.
 Package epstopdf Info: Output file is already uptodate.
 
-<./Figures/output1-eps-converted-to.pdf, id=114, 704.6325pt x 284.06125pt>
+<./Figures/output1-eps-converted-to.pdf, id=88, 704.6325pt x 284.06125pt>
 File: ./Figures/output1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use ./Figures/output1-eps-converted-to.pdf>
 Package pdftex.def Info: ./Figures/output1-eps-converted-to.pdf used on input l
-ine 415.
+ine 436.
 (pdftex.def)             Requested size: 227.62204pt x 91.75966pt.
- (./amrob.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 4--7
+Package epstopdf Info: Source file: <./Figures/DistErr.eps>
+(epstopdf)                    date: 2016-09-08 22:19:56
+(epstopdf)                    size: 43432 bytes
+(epstopdf)             Output file: <./Figures/DistErr-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-09-08 23:16:33
+(epstopdf)                    size: 27702 bytes
+(epstopdf)             Command: <repstopdf --outfile=./Figures/DistErr-eps-conv
+erted-to.pdf ./Figures/DistErr.eps>
+(epstopdf)             \includegraphics on input line 444.
+Package epstopdf Info: Output file is already uptodate.
+
+<./Figures/DistErr-eps-converted-to.pdf, id=89, 361.35pt x 252.945pt>
+File: ./Figures/DistErr-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ./Figures/DistErr-eps-converted-to.pdf>
+Package pdftex.def Info: ./Figures/DistErr-eps-converted-to.pdf used on input l
+ine 444.
+(pdftex.def)             Requested size: 227.62204pt x 159.33688pt.
+ [6 <./Figures/esquema_PID_motor-eps-converted-to.pdf> <./Figures/realVS3D.png>
+ <./Figures/VelocidadM4-eps-converted-to.pdf> <./Figures/output1-eps-converted-
+to.pdf>] (./amrob.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 9--12
 []\OT1/ptm/m/n/10 Rojas, R.  A Short His-tory of Om-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--7
+Underfull \hbox (badness 10000) in paragraph at lines 9--12
 \OT1/ptm/m/n/10 ni-di-rec-tional Wheels.  http://ftp.inf.fu-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--19
-[]\OT1/ptm/m/n/10 Committee, S. S. L. T., 2016.  Laws
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--19
-\OT1/ptm/m/n/10 of the robocup small size league 2016.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--19
-\OT1/ptm/m/n/10 http://wiki.robocup.org/images/1/18/Small[]Size[]League[]-
- []
-
-) [6 <./Figures/VelocidadM4-eps-converted-to.pdf> <./Figures/output1-eps-conver
-ted-to.pdf>] (./amrob.aux) ) 
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 52.
+) [7 <./Figures/DistErr-eps-converted-to.pdf>] (./amrob.aux) ) 
 Here is how much of TeX's memory you used:
- 3245 strings out of 493089
- 46012 string characters out of 6134842
- 120211 words of memory out of 5000000
- 6639 multiletter control sequences out of 15000+600000
- 35075 words of font info for 69 fonts, out of 8000000 for 9000
+ 3261 strings out of 493089
+ 46382 string characters out of 6134842
+ 118242 words of memory out of 5000000
+ 6652 multiletter control sequences out of 15000+600000
+ 36704 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,10n,23p,849b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips
-/base/8r.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on amrob.pdf (6 pages, 929614 bytes).
+ 38i,10n,23p,971b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texli
+ve/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
+/symbol/usyr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb
+i8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on amrob.pdf (7 pages, 962640 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 173 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

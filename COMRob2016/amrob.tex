@@ -1,18 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%% asme2e.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Template for producing AMRob-format articles using LaTeX           
-% Written by   Karla A. Camarillo Gómez                                             
-%              Control Systems                                                                
-%              Department of Mechanical Engineering                              
-%              Instituto Tecnológico de Celaya                                         
-%              Celaya, Gto., CP 38010                                                  
-%              Tel: (461) 611-9114 (office)                                     
-%              Fax: (461) 611-7979                                                         
-%              Email: karla.camarillo@itcelaya.edu.mx                              
-%              January, 2014                                           
-% Modified: May 21, 2015 by Karla A. Camarillo                          
-% Use at your own risk, send complaints to /dev/null               
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%% use twocolumn and 10pt options with the amrob format
 \documentclass[twocolumn,10pt]{amrob}
 \usepackage[utf8]{inputenc}
@@ -43,7 +28,7 @@
 \papernum{XVIIICOMRob2016/ID-000}
 
 %%% You need to remove 'DRAFT: ' in the title for the final submitted version.
-\title{Diseño y Desarrollo de un Robot Omnidireccional para Aplicaciones Colaborativas}
+\title{Diseño y Desarrollo de un Robot Omnidireccional para Aplicaciones Colaborativas\thanks{Investigación con patrocinio de la Asociación Mexicana de Cultura A.C.}}
 
 %%% first author
 \author{Edgar Granados Osegueda
@@ -59,7 +44,7 @@
 %%% second author
 %%% remove the following entry for single author papers
 %%% add more entries for additional authors
-\author{Marco Morales Aguirre
+\author{Marco Morales
 %\thanks{Address all correspondence to this author.} 
        {\tensfb }      
     \affiliation{Department of Digital Systems\\
@@ -70,7 +55,7 @@
     }
 }
 
-\author{José Guadalupe Romero Velazquez
+\author{José Guadalupe Romero
 %\thanks{Address all correspondence to this author.} 
        {\tensfb }      
     \affiliation{Department of Digital Systems\\
@@ -88,7 +73,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-{\it Este artículo describe el diseño de un robot movil omnidireccional para aplicaciones colaborativas, así como su construcción. Tambien, se describe el modelo cinemático utilizado para lograr el movimiento omnidireccional así como el algoritmo de control. Se detalla la arquitectura del sistema, que permite su utilización en ROS. Finalmente, se muestran los resultados en aplicaciones colaborativas. \par
+{\it Este artículo describe el diseño y construcción de un robot movil omnidireccional para aplicaciones colaborativas. Tambien se describe el modelo cinemático y un algoritmo de control. Se detalla la arquitectura del sistema basada en ROS que permite su uso en aplicaciones colaborativas. Finalmente, se muestran resultados de desempeño del robot que satisfacen los criterios de diseño.
 }
 \end{abstract}
 % \\
@@ -516,11 +501,6 @@ Como trabajo futuro se propone un método de sintonización automático para el 
 % used for an ASME paper is asmems4.bst.
 \bibliographystyle{amrob.bst}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{acknowledgment}
-Este trabajo fue patrocinado por la Asociación Mexicana de Cultura A.C.
-\end{acknowledgment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The bibliography is stored in an external database file

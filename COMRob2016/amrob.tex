@@ -398,7 +398,7 @@ Adicional al control PI por motor, se cuenta con la retroalimentación de la vis
 
 En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente. \par
 Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ante cada direccion con control PI sin visión y con visión. En la Fig. \ref{fig:visionPruebasRetro} se pueden ver los resultados de estas pruebas.Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que practiamente no se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot. \par
-Utilizando los datos del experimento mencionado anteriormente, se puede obtener el error que tiene el robot en el tiempo. Definiendo el error como la diferencia entre la posición deseada y la actual, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Debido a las dimensiones del robot, se estableció un margen de 150 mm por lo que se detiene al alcanzar esa posición reportada por visión.
+Utilizando los datos del experimento mencionado anteriormente, se puede obtener el error que tiene el robot en el tiempo. Definiendo el error como la diferencia entre la posición deseada y la actual, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Se puede observar como el error en las trayectorias sin visión es incremental mientras que en las trayectorias con visión, el error alcanza un máximo para disminuir, alcanzando la posición deseada.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -420,7 +420,7 @@ Utilizando los datos del experimento mencionado anteriormente, se puede obtener 
 \begin{figure}
   \centering
     \includegraphics[height=4cm,width=8cm]{DistErr.eps}
-  \caption{Robot Real vs Modelo 3D del Robot}
+  \caption{Error en la Trayectoria con y sin visión}
   \label{fig:errorPlot}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 

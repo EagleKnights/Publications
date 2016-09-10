@@ -236,7 +236,7 @@ Para el control del robot es necesario contar con comunicación inalámbrica. Se
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{ALGORITMOS}
 \label{sec:algoritmos}
-En esta sección se describen los algoritmos implementados en el robot para su control de bajo nivel
+En esta sección se describen los algoritmos implementados en el robot para su control de bajo nivel.
 
 \subsection*{Movimiento Omnidireccional}
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
@@ -247,9 +247,9 @@ En esta sección se describen los algoritmos implementados en el robot para su c
   \label{fig:angFzaDiag}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%%
-A partir de un movimiento deseado, expresado en el vector de velocidades deseadas del robot \( V_l= \begin{pmatrix} v_x & v_y & \omega \end{pmatrix}^{T} \), es necesario descomponerlo en velocidades de motores deseadas \( V_m= \begin {pmatrix} m_1 & m_2 & m_3 & m_4 \end{pmatrix}^{T} \). 
+El movimiento deseado para el robot se expresa en un vector de velocidades deseadas \( V_l= \begin{pmatrix} v_x & v_y & \omega \end{pmatrix}^{T} \) que es necesario descomponer en velocidades de motores deseadas \( V_m= \begin {pmatrix} m_1 & m_2 & m_3 & m_4 \end{pmatrix}^{T} \). 
 
-A partir de la ecuacion general de fuerza Eqn. \( F = Ma \) se puede derivar la Eqn. (\ref{eq:fmaMots}) específica para el caso de cuatro motores. Debido a las ruedas omnidireccionales, cada motor aporta en los componentes de X y Y. Utilizando el diagrama de la Fig. \ref{fig:angFzaDiag}, es posible derivar la Eqn. ~(\ref{eq:max1}) para el motor 1 en X y Eqn. ~(\ref{eq:may1} para el motor 1 un Y. Similarmente, se pueden obtener las ecuaciones para los otros motores.\par
+A partir de la ecuación general de fuerza \( F = Ma \) se deriva la Ecuación~(\ref{eq:fmaMots}) específica para el caso de cuatro motores. Debido a las ruedas omnidireccionales, cada motor aporta en los componentes de $X$ y $Y$. En base al diagrama de la Fig. \ref{fig:angFzaDiag}, se observa que para el motor 1 la aportación es descrita por las ecuaciones ~(\ref{eq:max1}) para $X$ y ~(\ref{eq:may1}) para $Y$. Similarmente, se pueden obtener las ecuaciones para los otros motores.
 %%%%%%%%%%%%%%%% Equation %%%%%%%%%%%%%%%%%%
 % \begin{equation}
 %   F= Ma \label{eq:FMA} \\
@@ -318,7 +318,7 @@ De los resultados obtenidos de las aceleraciones traslacionales y angulares, se 
 %   a=C_\alpha F \label{eq:gralAcoFzas} \\
 % \end{equation}
 
-Para poder realizar la transformación de la velocidad deseada en el espacio a velocidades de cada motor, es necesario considerar tanto el perímetro de la rueda como el factor de reducción mediante \(V_{l}^{'} = \frac{ V_l \cdot e } { 2 \pi r} \). A partir de esta, se pueden obtener las ecuaciones de cada motor definiendo el vector \( v_m = \begin{pmatrix}v_1 & v_2 & v_3 & v_4\end{pmatrix} ^{T}\) mediante la Eqn. \eqref{eq:velsMots}  y su forma reducida \(v_m = D V_{l}^{'}\) donde a \( D \) se le conoce como la Matriz de Acoplamiento de Velocidades. \par 
+Para transformar la velocidad deseada en el espacio a velocidades de cada motor, es necesario considerar el perímetro de la rueda y el factor de reducción mediante \(V_{l}^{'} = \frac{ V_l \cdot e } { 2 \pi r} \). Así, se obtienen las ecuaciones de cada motor mediante la Eqn. \eqref{eq:velsMots}  y su forma reducida \(v_m = D V_{l}^{'}\) donde a \( D \) se le conoce como la Matriz de Acoplamiento de Velocidades. \par 
 
 % \begin{equation}
 %   V_{l}^{'} = \frac{ V_l \cdot e } { 2 \pi r} \label{eq:reductorPerim}
@@ -378,9 +378,9 @@ Para poder realizar la transformación de la velocidad deseada en el espacio a v
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Control}
-Para el control a bajo nivel, utilizando la retroalimentación que otorga cada motor, se implementó un control PI a nivel motor. El esquema general del algoritmo de control utilizado se muestra en la Fig. \ref{fig:ctrl}. La sintonización de las variables se realiza a mano siguiendo el método de Ziegler - Nicholson. \par
+Para el control, se implementó un control PI a nivel de cada motor. El esquema general del algoritmo de control utilizado se muestra en la Fig. \ref{fig:ctrl}. La sintonización de las variables se realiza a mano siguiendo el método de Ziegler - Nicholson. \par
 % Se incorporó un PI a nivel motor, utilizando el método de Ziegler - Nicholson para realizar la sintonización de las variables.
-Adicional al control PI por motor, se cuenta con la retroalimentación de la visión gracias a la cual se puede calcular y corregir la trayectoria del robot al enviar continuamente actualizaciones de la velocidad deseada (30 Hz). 
+Adicionalmente, se cuenta con la retroalimentación de la visión gracias a la cual se puede calcular y corregir la trayectoria del robot al enviar continuamente actualizaciones de la velocidad deseada (30 Hz). 
 % En la Fig. \ref{fig:visionPrueba} se muestran las trayectorias seguidas por el robot al utilizar solamente el control PI así como utilizando el control PI y la retroalimentción de la visión.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -397,9 +397,11 @@ Adicional al control PI por motor, se cuenta con la retroalimentación de la vis
 \section*{EXPERIMENTACIÓN Y RESULTADOS}
 % Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 3.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
 
-En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente. \par
-Estableciendo 8 direcciones en el plano XY, se probó la respuesta del robot ante cada direccion con control PI sin visión y con visión. En la Fig. \ref{fig:visionPruebasRetro} se pueden ver los resultados de estas pruebas.Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que practiamente no se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot. \par
-Utilizando los datos del experimento mencionado anteriormente, se puede obtener el error que tiene el robot en el tiempo. Definiendo el error como la diferencia entre la posición deseada y la actual, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Se puede observar como el error en las trayectorias sin visión es incremental mientras que en las trayectorias con visión, el error alcanza un máximo para disminuir, alcanzando la posición deseada.
+En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente.
+
+Estableciendo 8 direcciones en el plano XY, se obtuvo la respuesta del robot en cada dirección con control PI sin visión y con visión como se puede ver en la Fig. \ref{fig:visionPruebasRetro}. Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que prácticamente sólo se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot.
+
+Utilizando los datos del experimento anterior, se obtener el error en el tiempo definido como la diferencia entre la posición deseada y la medida, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Se puede observar como el error en las trayectorias sin visión es incremental mientras que en las trayectorias con visión, el error alcanza un máximo para disminuir, alcanzando la posición deseada.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -452,10 +454,13 @@ Utilizando los datos del experimento mencionado anteriormente, se puede obtener 
 % All tables should be numbered consecutively and  captioned; the caption should use all capital letters, and centered above the table as shown in Table~\ref{table_AMRob}. The body of the table should be no smaller than 7 pt.  There should be a minimum two line spaces between tables and text.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{CONCLUSIÓN}
-Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 2.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
-La utilización de ROS para el sistema así como el funcionamiento de la arquitectura propuesta ha sido satisfactorio. La modularidad entre sus componentes permite intercambiarlos si se requiere una función distinta sin afectar el comportamiento del resto del sistema. \par
-Como trabajo futuro se propone un método de sintonización automático para el sistema de control. Adicionalmente, es necesario implementar un algoritmo de evación de obstáculos así como un módulo asignación de tareas. \par
+\section*{CONCLUSIONES}
+Se presentó el diseño de un robot omnidireccional para su uso en aplicaciones colaborativas. La arquitectura del sistema fue probada con un robot que cumple las especificaciones de la competencia de la \emph{Small Size League} de la RoboCup, pero esta permite intercambiar componentes para otras aplicaciones gracias a su integración con el Robot Operating System.
+
+Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 2.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el \textit{patrón estandar} incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.
+
+
+Como trabajo futuro se propone un método de sintonización automático para el sistema de control. Adicionalmente, es necesario expandir las capacidades del módulo de planificación para incorporar algoritmos estándar de planificación de tareas y de planificación de movimientos.
 
 
 % \section*{FOOTNOTES\protect\footnotemark}

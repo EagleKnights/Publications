@@ -1,0 +1,3 @@
+[submodule "COMRob2016"]
+	path = COMRob2016
+	url = https://github.com/EagleKnights/Publications.git

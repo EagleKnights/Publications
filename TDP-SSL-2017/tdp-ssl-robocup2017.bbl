@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{robocup-ssl-rules}
+Laws of the robocup small size league.
+\newblock "http://wiki.robocup.org/wiki/Small\_Size\_League/Rules".
+
+\bibitem{zlbwv-sslvtsvsftrcssl-RoboCup-2009}
+S.~Zickler, T.~Laue, O.~Birbach, M.~Wongphati, and M.~Veloso.
+\newblock {SSL-Vision: The Shared Vision System for the {RoboCup} Small Size
+  League}.
+\newblock {\em RoboCup 2009: Robot Soccer World Cup XIII}, pages 425--436,
+  2009.
+
+\bibitem{k-rtoam-86}
+O.~Khatib.
+\newblock Real--time obstacle avoidance for manipulators and mobile robots.
+\newblock {\em Int. J. Robot. Res.}, 5(1):90--98, 1986.
+
+\bibitem{eb-lppidewu-IEEEICMFI-1994}
+Basu~A. Elnagar, A.
+\newblock Local path planning in dynamic environments with uncertainty.
+\newblock pages 183 --190, Oct 1994.
+
+\end{thebibliography}

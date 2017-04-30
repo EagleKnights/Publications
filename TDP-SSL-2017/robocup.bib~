@@ -1,0 +1,116 @@
+@inproceedings{RC2008,
+  author    = {Alfredo Weitzenfeld and
+               Carlos Ramos and
+               Peter Ford Dominey},
+  title     = {Coaching Robots to Play Soccer via Spoken-Language},
+  booktitle = {RoboCup},
+  year      = {2008},
+  pages     = {379-390},
+}
+
+@conference{LARS2005,
+	author	= {Martínez-Gómez, José Alfredo and
+			   Weitzenfeld, Alfredo},
+	title	= {Real Time Localization in Four Legged RoboCup Soccer},
+	address	= {Sao Luis, Brasil},
+	year	= {2005},
+	booktitle = {2nd IEEE-RAS Latin American Robotics Symposium}
+
+
+}
+
+@misc{robocup-ssl-2012,
+	title	= {{RoboCup SSL}, Laws of the {F180} League 2012},
+	note		= {http://small-size.informatik.uni-bremen.de/rules:main}
+	}
+	
+	@misc{robocup-ssl-2013,
+		title	= {Laws of the RoboCup Small Size League 2013},
+		note		= {http://robocupssl.cpe.ku.ac.th/rules:main}
+		}
+	
+	
+	@article{zlbwv-sslvtsvsftrcssl-RoboCup-2009,
+	  title={{SSL-Vision: The Shared Vision System for the {RoboCup} Small Size League}},
+	  author={Zickler, S. and Laue, T. and Birbach, O. and Wongphati, M. and Veloso, M.},
+	  journal={RoboCup 2009: Robot Soccer World Cup XIII},
+	  publisher={Springer},
+	  pages={425--436},
+	  year={2009},
+	}
+	
+@misc{MicroMo,
+	title	= {MicroMo},
+	note		= {http://www.faulhaber-group.com/uploadpk/e\_201\_MIN.pdf}
+}
+
+@misc{pico,
+	title	= {Pico Electronics}, 
+	note	= {http://www.picoelectronics.com/dcdclow/pe88\_89.htm}
+}
+
+@misc{opengl,
+	title	= {{OpenGL} Open Graphics Library},
+	note 	= { http://www.opengl.org/ }
+}	
+
+@INPROCEEDINGS{eb-lppidewu-IEEEICMFI-1994, 
+author={Elnagar, A., Basu, A., }, 
+journal={Multisensor Fusion and Integration for Intelligent Systems, 1994. IEEE International Conference on MFI '94.}, 
+title={Local path planning in dynamic environments with uncertainty}, 
+year={1994}, 
+month={Oct}, 
+volume={}, 
+number={}, 
+pages={183 -190}, 
+keywords={ acceleration constraint; dynamic environments; local path planning; moving obstacles; safe path planning; safety function; speed constraints; uncertainty; constraint handling; mobile robots; path planning; position control; uncertainty handling;}, 
+doi={10.1109/MFI.1994.398459}, 
+ISSN={},}	
+	
+@inproceedings{mgssw-daioasslrcst-larc-2005,
+	author = {Martínez-Gómez, L.A and 
+				Moneo, F. and
+				Sotelo, D. and
+				Soto, M. and
+				Weitzenfeld, A.},
+	title =  {Design and Implementation of a Small Size {RoboCup} Soccer Team},
+	booktitle = {2nd IEEE-RAS Latin American Robotics Symposium},
+	year = {2005}, 
+	address = {Sao Luis, Brasil}
+} 
+
+@techreport{s-daioitamf180r-2006,
+		author = {David Sotelo},
+		title = {Design and Implementation of {ITAM}’s {F-180} Robots},
+		institution= {Digital Systems Department, ITAM},
+		address= {Mexico City, Mexico},
+		year= {2006}
+}
+
+@techreport{t-csfmrsircssl-2009,
+	author={Ernesto Torres}, 
+	title={Coordination Strategies for Multi-Robot Systems in {RoboCup} Small-Size League},
+	institution={Computer Engineering Dept, ITAM}, 
+	address={Mexico City, Mexico},
+	year={April},
+	month={2009}
+}
+
+@techreport{r-raftrcssl-2009,
+	author={Jesús Rodríguez}, 
+	title ={Robotics Architectures for the {RoboCup} Small-Size League},
+	institution={Computer Engineering Dept, ITAM}, 
+	address={Mexico City, Mexico},
+	month={June},
+	year = {2009}
+}
+
+@conference{tw-rcsslunntlcsdvp-2008,
+	author	= {Ernesto Torres and Alfredo Weitzenfeld},
+	title	= {{RoboCup} Small-Size League: Using Neural Networks to Learn Color Segmentation During Visual Processing},
+	address	= {Salvador, Brasil},
+	year	= {2008},
+	booktitle = {ENRI-LARS}
+
+
+}

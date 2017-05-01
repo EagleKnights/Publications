@@ -11,14 +11,22 @@ S.~Zickler, T.~Laue, O.~Birbach, M.~Wongphati, and M.~Veloso.
 \newblock {\em RoboCup 2009: Robot Soccer World Cup XIII}, pages 425--436,
   2009.
 
-\bibitem{k-rtoam-86}
-O.~Khatib.
-\newblock Real--time obstacle avoidance for manipulators and mobile robots.
-\newblock {\em Int. J. Robot. Res.}, 5(1):90--98, 1986.
+\bibitem{maxon_motor}
+Maxon.
+\newblock {\em EC 45 flat 42.9 mm, brushless, 30 Watt}, 5 2012.
 
-\bibitem{eb-lppidewu-IEEEICMFI-1994}
-Basu~A. Elnagar, A.
-\newblock Local path planning in dynamic environments with uncertainty.
-\newblock pages 183 --190, Oct 1994.
+\bibitem{esc_afro}
+SimonK.
+\newblock {\em Afro ESC}.
+
+\bibitem{xbee_wifi}
+Digi.
+\newblock {\em XBee Wi-Fi}, 2015.
+
+\bibitem{rojas05}
+Raul Rojas.
+\newblock {O}mnidirectional {C}ontrol.
+\newblock \url {http://robocup.mi.fu-berlin.de/buch/omnidrive.pdf}, May 2005.
+\newblock Freie Universität Berlin.
 
 \end{thebibliography}

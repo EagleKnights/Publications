@@ -5,7 +5,9 @@
 \usepackage{mathtools}
 \usepackage{color}
 
-\newcommand{\TODO}[1]{{\color{red}{TODO: {#1}}}}
+\newcommand{\TODO}[1]{{\color{red}{ToDo: {#1}}}}
+\newcommand{\NOTE}[1]{{\color{blue}{Note: {#1}}}}
+\newcommand{\EXCISE}[1]{}
 
 \special{papersize=8.5in,11in}
 
@@ -373,7 +375,7 @@ Para transformar la velocidad deseada en el espacio a velocidades de cada motor,
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
 \begin{figure}
   \centering
-    \includegraphics[width=8cm]{esquema_PID_motor.eps}
+    \includegraphics[width=8cm]{ciclo_ctrl_avr.png}
   \caption{Esquema de Control Implementado}
   \label{fig:ctrl}
 \end{figure}
@@ -398,38 +400,119 @@ Adicionalmente, se cuenta con la retroalimentación de la visión gracias a la c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{EXPERIMENTACIÓN Y RESULTADOS}
 % Con el diseño propuesto se logra que el robot se mueva aproximadamente a la velocidad propuesta, manteniendo la integridad de sus componentes y con un peso menor que el contemplado inicialmente, aunque siendo capaz de cargar los 3.5 Kg propuestos. Tanto la carcasa como la base y las ruedas han sido capaces de resistir golpes entre los robots a las velocidades normales de movimiento y la visión reconoce el patrón estandar incoporado en la carcasa. En la Fig. \ref{fig:ModRealVSdes} se muestra una comparación entre el diseño modelado en 3D y la construcción final del robot.\par 
+\EXCISE{
+  En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente.
 
-En la Fig. \ref{fig:realVSdes} se puede ver la respuesta de un motor ante una velocidad deseada con el algoritmo de control PI implementado. Aunque las oscilaciones no se eliminan, se reducen rápidamente, siendo la respuesta rápida uno de los factores más importantes debido al dinamismo del sistema. Igualmente, el motor es capaz de cambiar de velocidad, incluso a velocidades negativas (dirección contraria) rápidamente.
+  Estableciendo 8 direcciones en el plano XY, se obtuvo la respuesta del robot en cada dirección con control PI sin visión y con visión como se puede ver en la Fig. \ref{fig:visionPruebasRetro}. Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que prácticamente sólo se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot.
 
-Estableciendo 8 direcciones en el plano XY, se obtuvo la respuesta del robot en cada dirección con control PI sin visión y con visión como se puede ver en la Fig. \ref{fig:visionPruebasRetro}. Para el caso del robot sin retroalimentación de visión, existen algunas direcciones en las cuales el movimiento y su posición final es cercano al deseado, especificamente en las direcciones en que prácticamente sólo se utilizan dos ruedas. En cambio en las otras direcciones, se tiene mayor error en el movimiento del robot. Para el caso del movimiento con retroalimentación de visión, aunque en algunos casos existe un movimiento errático, la posición final es muy cercana a la deseada gracias a la correción que realiza el sistema ante los errores en el movimiento del robot.
+  Utilizando los datos del experimento anterior, se obtener el error en el tiempo definido como la diferencia entre la posición deseada y la medida, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Se puede observar como el error en las trayectorias sin visión es incremental mientras que en las trayectorias con visión, el error alcanza un máximo para disminuir, alcanzando la posición deseada.
+}
+Para validar el desempeño de los motores ante una entrada de velocidad deseada del robot, se definen 3 velocidades posibles para cada componente del vector $(X, Y, \theta ): +V_{cte}, 0, -V_{cte}. $  Existen 27 posibles combinaciones. En la Fig. \ref{fig:realVSdes} se muestra la respuesta de cada motor así como del vector de velocidad deseada del robot bajo dos esenarios distintos. Para el primer escenarios solamente se utiliza el lazo de control a nivel de motor. Para el segundo escenario se utiliza tanto el lazo de control a nivel de motor como el lazo de control a niver de robot. Durante la prueba, cada combinación es enviada al robot con un periodo de 10 segundos trasa el cual se apagan los motores por 10 segundos.
+\par
+En las pruebas para el primer escenario, la velocidad deseada de cada motor permanece constante una vez recibida la señal. Aunque en la mayoría de las combinaciones se alcanzan las velocidades de motor deseadas, resaltan 2 casos específicos. En el primero, en ciertas combinaciones como $(+V, +V, +V )$ y $(-V, -V, -V) $ para el motor 1, no se alcanza la velocidad deseada por ser mayor a la velocidad sin carga de 72 RPS. El segundo caso se presenta en combinaciones como $(+V, -V, 0) $ y  $(+V, -V, -V)$ , en las cuales la velocidad deseada para algún motor es muy baja para que el motor la pueda mantener por lo que comienza a oscilar alrededor de ésta. En ambos casos, el que uno o más motores no alcancen ni se mantengan en la velocidad deseada repercute en el vector de velocidades reales del robot: en ambos casos, no se alcanzan las velocidades deseadas pero en el segundo además se presenta una oscilación importante.
+\par
+En el segundo escenario, la velocidad deseada de motor no es constante ante cada entrada ya que es determinada por el ciclo de control a nivel robot. Aunque no siempre se alcanzan las velocidades deseadas por motor, sí se alcanzan y se mantienen las velocidades del vector $(X, Y, \theta )$. En algunos casos como $(+V, +V, +V )$ y $(+V, +V, -V) $, se tarda mucho en alcanzar la velocidad deseada aunque esto se puede mejorar utilizando otros valores $k_p$ y $k_i$.
+\par
 
-Utilizando los datos del experimento anterior, se obtener el error en el tiempo definido como la diferencia entre la posición deseada y la medida, en la Fig. \ref{fig:errorPlot} se puede observar la mejora que representa la retroalimentación de visión. Se puede observar como el error en las trayectorias sin visión es incremental mientras que en las trayectorias con visión, el error alcanza un máximo para disminuir, alcanzando la posición deseada.
-
-
+\NOTE{En la imagén \ref{fig:realVSdes} se podría cambiar a que sea solamente una entrada y su respuesta?}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
 \begin{figure}
   \centering
-    \includegraphics[height=3cm,width=8cm]{VelocidadM4.eps}
-  \caption{Velocidad real vs Velocidad deseada}
+    \includegraphics[height=3cm,width=8cm]{160517-vels-motVSmotrob.eps}
+  \caption{Velocidad de Motor Real vs Velocidad de Motor Deseada}
   \label{fig:realVSdes}
 \end{figure}
-\begin{figure}
-  \centering
-    \includegraphics[width=8cm]{output1.eps}
-  \caption{Trayectorias con retroalimentación}
-  \label{fig:visionPruebasRetro}
-\end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Prubas sin Retroalimentación de Visión}
+\label{subsec:pruebas_sin_vision}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+El objetivo de éstas pruebas es validar el movimiento omnidireccional del robot sin tener retroalimentaicón de ningún sistema externo. El sistema de Visión de SSL es utilizado para la captura de datos y generar la velocidad inicial deseada.
+\par
+Para las pruebas, se define una circunferencia con centro en un \textit{p0}. Se toman 8 puntos ${P_1, P_2, ..., P_8}$ en la circunferencia tales que: $\angle P_nP_0P_{n+1} = 45^\circ $. La prueba realizada consiste en colocar al robot en $P_0$, siempre orientado a $P_3$ y mandar solamente un mensaje con la velocidad deseada en dirección a uno de los 8 puntos. Solamente se da velociad en X y/o Y, manteniendo la velocidad de $\theta$ en 0. Con esto se busca probar que el robot es capaz de mantener su orientación al moverse en cualquier dirección. 
+\par
+La Fig. \ref{fig:8pts_without_vision} muestra la posición de los puntos $P_0, P_1, ..., P_8$ así como los vectores que idealmente seguiría el robot a cada punto. También se muestran las trayectorias reales seguidas por el robot en cada una de 10 repeticiones a cada punto. A partir de estos datos, se obtuvo una tendencia del movimiento del robot a cada punto. 
+\par
+Cada data de la trayectoria del robot representa la posición del centro del robot a un tiempo determinado. Por claridad, cada punto está representado con dimensiones menores a las del robot, el área que ocupa en realidad el robot es un círculo de 90 mm de radio; en la gráfica se muestra el un punto escala 1:1 en la esquina inferior derecha. Debido a las características particulares del sistema de visión, éste no reporta la posición del robot si se encuentra cercano al extremo derecho (donde se encuentra $P_3$) aunque el robot se encuentra en esa zona.
+\par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Movimiento en el Plano}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+La dirección que mejor desempeño mostró en estas pruebas fue $(+V, 0, 0)$ al punto 3. Aunque se tiene cierta varianza, en la mayoria de los casos el robot llega directo al punto 3 en linea prácticamente recta. La tendencia casi coincide don el vector que idealmente seguiría el robot. Para la dirección $(-V, 0, 0)$ a $P_7$ se presenta un desempeñomuy similar teniendo una clara desviación hacia el la dirección $+Y$ del eje coordenado del robot. El robot mantiene una trayectoria casi recta en la mayoria de los casos, la línea de tendecia pasa muy cerca de $P_7$.
+\par
+Las direcciones $(+V, -V, 0)$ y $(+V, +V, 0)$ a los puntos $P_2$ y $P_4$ respectivamente, presentan resultados muy similares. En ambos casos, las trayectorias del robot son curvas, cruzando al vector de dirección ideal. A pesar de ésto, la tendencia queda muy cercana al punto objetivo dentro de las dimensiones del robot. \par
+Las direcciones $(-V, -V, 0)$ y $(-V, +V, 0)$ a los puntos $P_6$ y $P_8$ respetivamente, presentan errores importantes en las trayectorias. En estos dos casos, se observa la acción del ciclo de control a nivel robot al correjir el movimiento y llegar al punto objetivo. Las tendencias quedan muy cerca de los puntos objetivos aunque ambas atraviezan los vectores de dirección ideal. Especialmente la tendencia de las trayectorias al punto $P_6$ queda muy cercana al punto aunque existe una varianza importante. 
+\par
+Por último, las direcciones $(0, +V, 0)$ y $(0, -V, 0)$ a los puntos $P_1$ y $P_5$ son las que presentan el peor desempeño teniendo un error importante respecto al punto objetivo, no alcanzándolo en ninguna ocación. Las líneas de tendencia muestran una clara desviación respecto a los vectores de trayectoria ideal. Estos resultados reflejan la eficiencia de los valores utilizados para $k_p$ y $k_i$ del control PI, modificando estos valores se podrían obtener mejores resultados. 
+\par
+En la Fig. \ref{fig:8pts_without_vision} se puede observar que las trayectorias del robot parecen reflejarse alrededor del eje X. Al moverse solamente en ésta dirección es que el robot presenta mejores resultados. 
+\par
 %%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
 \begin{figure}
   \centering
-    \includegraphics[height=4cm,width=8cm]{DistErr.eps}
-  \caption{Error en la Trayectoria con y sin visión}
-  \label{fig:errorPlot}
+    \includegraphics[height=3cm,width=8cm]{8pts260517-without-vision.eps}
+  \caption{Trayectorias con retroalimentación}
+  \label{fig:8pts_without_vision}
+\end{figure}
+%%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsubsection*{Orientación}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A partir de los mismos datos utilizados en la subsección pasada, en la Fig. \ref{fig:orient_without_vision}
+se muestra el error en la orientación para cada prueba realizada a cada punto. Los datos presentan saltos debido a que solo se presenta la orientación durante el movimiento del robot de $P_0$ al punto deseado, no del reposicionamiento a $P_0$.
+\par
+La orientación del robot durante las trayectorias a los puntos $P_3$ y $P_7$ son las que menor error presentaron. Para los puntos $P_2, P_4, P_6$ y $P_8$, el error en la orientación es mayor aunque (salvo en dos pruebas) el error es menor a 0.5 radianes. Para estos casos, el error comienza en una dirección y generalmente existe una sobrecompensación de éste error llevandolo a la dirección contraria. La orientación en las trayectorias a los puntos $P_1$ y $P_5$, el error sobrepasa los 0.5 radianes en la mayoría de las pruebas, aunque es mayor en las trayectorias al punto $P_1$. 
+\par
+En error en la orientación del robot en las trayectorias a cada punto es consistente con el error en su movimiento en el plano. Los errores en la orientación también se reflejan en el eje X del robot: las direcciones del error para los puntos $P_1, P_2 $ y $P_8$ es la contraria que para los puntos $P_4, P_5$ y $P_6$.
+%%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+    \includegraphics[height=3cm,width=8cm]{8pts260517-without_vision-multi-theta.eps}
+  \caption{Error en la Orientación del Robot en las Pruebas sin Retroalimentación de Visión}
+  \label{fig:orient_without_vision}
 \end{figure}
 %%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Pruebas con Retroalimentación de Visión y Trayectorias Dinámicas}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+El objetivo de éstas pruebas es validar el movimiento del robot ante un ambiente dinámico donde la trayectori deseada cambia rápidamente. 
+\par
+Para éstas pruebas se utiliza un sistema desarrollado sobre ROS con la arquitectura mostrada en la Fig. \ref{fig:ROSGral}.  El sistema de visión de SSL detecta al robot y determina su localización en el munto. A partir de ésta información, el módulo de planeación genera el siguiente punto objetivo en el mundo (para las pruebas, uno de los puntos $P_0, ..., P_8$) definidos anteriormente. La generación de rutas encuentra una ruta viable (al no existir obstáculos, la ruta siempre será una línea recta). El módulo de control genera la trayectoria para seguir la ruta generada. La trayectoria consiste en puntos intermedios entre la posición del robot y el punto objetivo. Es importante resaltar que el sistema asume que el robot no va a llegar a los puntos intermedios generados por la trayectoria ya que se actualizan antes de alcanzarlo, funcionan como \textit{puntos atractores}. El control a bajo nivel determina el vector de velocidad deseada del robot $(X, Y, \theta)$ y le envía la información al robot. La operación y algoritmos utilizados en cada módulo escapa el alcance de éste documento.
+\par
+El comportamiento programado para éstas pruebas consiste en que el robot (colocado inicialmente en $P_0$visite cada punto en la siguiente secuencia: $P_1, P_0, P_2, P_0, ..., P_7, P_0, P_8, P_0$. Todo de forma autónoma manteniendo la orientación del robot con dirección a $P_3$. 
+\par
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Movimiento en el Plano}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+En la Fig. \ref{fig:8pts_vision_multi} se muestra la respuesta del robot en las 10 pruebas realizadas. Para cada prueba, se grafica la trayectoria deseada (generada por el módulo de control) así como la trayectoria real seguida por el robot. 
+\par
+Por la forma en que opera la generación de trayectorias, no se espera que todos los puntos intermedios sean alcanzados pero sí que el robot sea capaz de dirigirse a ellos creando trayectoria de forma similar a la deseada. Esto sucede en todas las pruebas realizadas, donde la trayectoria real del robot es muy similar a la deseada, alcanzando todos los puntos. En éstas pruebas se puede notar el efecto que tiene el error analizado en \ref{subsec:pruebas_sin_vision} en las trayectorias reales del robot. En los puntos en que sin visión se presenta mayor error son también a los puntos que la trayectoria se realiza con un arco más pronunciado. 
+\par
+%%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+    \includegraphics[height=3cm,width=8cm]{8pts260517-with_vision-multi.eps}
+  \caption{Movimiento del Robot con Retroalimentación de Visión y Trayectorias Dinámicas}
+  \label{fig:8pts_vision_multi}
+\end{figure}
+%%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Orientación}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+En la Fig. \ref{fig:orient_vision_multi} se muestra el error en la orientación del robot en el tiempo para cada prueba realizada. El módulo de control considera una tolerancia para la orientación de $\pm 0.1$ radianes. El sistema no genera velocidad en $\theta$ para corregir el error si éste es menor a la tolerancia indicada. 
+\par
+En las 10 pruebas realizadas, el error en la orientación del robot solamente llega a 1 radian en una ocasión. En 20 ocaciones el valor absoluto del error es mayor a 0.5 radianes aunque es corregido y regresa a estar dentro del rango deseado. 
+\par
+%%%%%%%%%%%%%%%% begin figure %%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+    \includegraphics[height=3cm,width=8cm]{8pts260517-with_vision-multi-theta.eps}
+  \caption{Velocidades Deseadas vs Velocidades Reales}
+  \label{fig:orient_vision_multi}
+\end{figure}
+%%%%%%%%%%%%%%%% end figure %%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

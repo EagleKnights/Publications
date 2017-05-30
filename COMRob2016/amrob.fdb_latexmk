@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex amrob"] 1496081809 "amrob.aux" "amrob.bbl" "amrob" 1496081812
-  "amrob.aux" 1496081811 2956 5b31a23325c42ffbfc60f3590986e1a9 ""
+["bibtex amrob"] 1496115406 "amrob.aux" "amrob.bbl" "amrob" 1496115410
+  "amrob.aux" 1496115408 3601 97298e3158b8fb222c6f212d6f6daa10 ""
   "amrob.bcf" 0 -1 0 ""
-  "amrob.bib" 1473440195 5158 6bcc4610a1fe12dc17df95eef2e4ac25 ""
+  "amrob.bib" 1496101880 5943 77b329c487e4a69ac0bc83e46c22918a ""
   "amrob.bst.bst" 0 -1 0 ""
   (generated)
-  "amrob.bbl"
   "amrob.blg"
-["pdflatex"] 1496081809 "amrob.tex" "amrob.pdf" "amrob" 1496081812
+  "amrob.bbl"
+["pdflatex"] 1496115407 "amrob.tex" "amrob.pdf" "amrob" 1496115410
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1396833912 1422999 120086736902aeebe94d194ffde31e04 ""
@@ -109,10 +109,10 @@
   "Figures/diagElectronica.eps" 1473123507 301823 946f1da2feba72b9f79b8cce63532b92 ""
   "Figures/realVS3D.png" 1473123508 257447 4bda3e5708709194e1715d83486bf1d3 ""
   "Figures/rueda.png" 1473123510 62943 e3a67bb639c32a9d75e167645d16b152 ""
-  "amrob.aux" 1496081811 2956 5b31a23325c42ffbfc60f3590986e1a9 ""
-  "amrob.bbl" 1496081809 2379 3b2cf550aa2a0d2bcf981d8c503008b4 "bibtex amrob"
+  "amrob.aux" 1496115408 3601 97298e3158b8fb222c6f212d6f6daa10 ""
+  "amrob.bbl" 1496115406 2834 2f6004ee2a8f97880d3128b1e51a1b31 "bibtex amrob"
   "amrob.cls" 1473452771 44618 5e764b67f0359189fa3f0a7f41ec4c1c ""
-  "amrob.tex" 1496081806 51648 a9bd18c17dc700cbbfbf8516419577a2 ""
+  "amrob.tex" 1496115402 53717 df322c034adacd3e999fcaf3a53ac5af ""
   (generated)
   "amrob.aux"
   "amrob.log"

@@ -5,6 +5,26 @@ Corke, P., 2011.
 \newblock {\em Robotics, Vision and Control: Fundamental Algorithms in MATLAB}.
 \newblock Springer Tracts in Advanced Robotics. Springer Berlin Heidelberg.
 
+\bibitem{houshangi1999omnibot}
+Houshangi, N., and Lippitt, T., 1999.
+\newblock ``Omnibot mobile base for hazardous environment''.
+\newblock In Electrical and Computer Engineering, 1999 IEEE Canadian Conference
+  on, Vol.~3, IEEE, pp.~1357--1361.
+
+\bibitem{aduascualictei2011practical}
+Ad{\u{a}}sc{\u{a}}li{\c{t}}ei, F., and Doroftei, I., 2011.
+\newblock ``Practical applications for mobile robots based on mecanum wheels-a
+  systematic survey''.
+\newblock {\em Gh. Asachi Technical University of Iasi, Mechanical Engineering
+  Faculty, Theory of Mechanisms and Robotics Department, B-dul D. Mangeron},
+  pp.~61--63.
+
+\bibitem{borgolte1998architectural}
+Borgolte, U., Hoyer, H., B{\"u}hler, C., Heck, H., and Hoelper, R., 1998.
+\newblock ``Architectural concepts of a semi-autonomous wheelchair''.
+\newblock {\em Journal of Intelligent and Robotic Systems, \textbf{ 22}}(3-4),
+  pp.~233--253.
+
 \bibitem{rojas2005short}
 Rojas, R., 2005.
 \newblock ``A short history of omnidirectional wheels''.
@@ -33,33 +53,23 @@ Purwin, O., and D’Andrea, R., 2003.
 \newblock ``Cornell big red 2003''.
 \newblock {\em Robocup}.
 
-\bibitem{houshangi1999omnibot}
-Houshangi, N., and Lippitt, T., 1999.
-\newblock ``Omnibot mobile base for hazardous environment''.
-\newblock In Electrical and Computer Engineering, 1999 IEEE Canadian Conference
-  on, Vol.~3, IEEE, pp.~1357--1361.
-
-\bibitem{aduascualictei2011practical}
-Ad{\u{a}}sc{\u{a}}li{\c{t}}ei, F., and Doroftei, I., 2011.
-\newblock ``Practical applications for mobile robots based on mecanum wheels-a
-  systematic survey''.
-\newblock {\em Gh. Asachi Technical University of Iasi, Mechanical Engineering
-  Faculty, Theory of Mechanisms and Robotics Department, B-dul D. Mangeron},
-  pp.~61--63.
-
-\bibitem{borgolte1998architectural}
-Borgolte, U., Hoyer, H., B{\"u}hler, C., Heck, H., and Hoelper, R., 1998.
-\newblock ``Architectural concepts of a semi-autonomous wheelchair''.
-\newblock {\em Journal of Intelligent and Robotic Systems, \textbf{ 22}}(3-4),
-  pp.~233--253.
-
-\bibitem{sslWiki}
-Robocup-SSL, 2015.
-\newblock Small size league.
-\newblock http://wiki.robocup.org/wiki/Small\_Size\_League.html.
-
 \bibitem{chaisoskuba}
 Chaiso, K., and Sukvichai, K.
 \newblock Skuba 2011 extended team description.
+
+\bibitem{rylltigers}
+Ryll, A., Ommer, N., Geiger, M., Jauer, M., and Theis, J., 2014.
+\newblock ``Tigers mannheim''.
+
+\bibitem{egorova2003fu}
+Egorova, A., Gloye, A., Liers, A., Rojas, R., Schreiber, M., Simon, M.,
+  Tenchio, O., and Wiesel, F., 2003.
+\newblock ``Fu-fighters 2003 (global vision)''.
+\newblock In 7th International Workshop on RoboCup.
+
+\bibitem{parsian-tdp-2011}
+Poorjandaghi, S.~S., Monajjemi, V., Mehrabi, V., Nabi, M.~M., Koochakzadeh, A.,
+  Atashzar, S.~F., Omidi, E., Pahlavani, A., Sheikhi, E., Bahmand, A., et~al.
+\newblock ``Team description for robocup 2011''.
 
 \end{thebibliography}
